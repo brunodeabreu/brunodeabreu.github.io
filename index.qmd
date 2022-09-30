@@ -1,7 +1,53 @@
 ---
-title: "mysite"
+title: "Bruno de Abreu Machado"
+image: img/bruno.jpg
+about: 
+  template: trestles
+  image-shape: rounded
+  image-width: 16em
+  links:
+    - icon: linkedin 
+      text: LinkedIn
+      href: https://www.linkedin.com/in/brunodeabreu/
+    - icon: twitter 
+      text: Twitter
+      href: https://twitter.com/__bmachado__
+    - icon: github 
+      text: GitHub
+      href: https://github.com/brunodeabreu
+    - icon: envelope 
+      text: Email
+      href: mailto:brunodeabreu@gmail.com
 ---
 
-This is a Quarto website.
+### olá!    
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Eu sou Bruno, trabalho com suporte ao banco de dados Db2 UDB  na [Kyndryl](https://www.kyndryl.com/us/en), sou de Belo Horizonte/MG.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+### educação
+
+###### {{< fa graduation-cap >}}  Estatística
+Universidade Amhembi Morumbi, 6 Período
+
+###### {{< fa graduation-cap >}} Pós Graduado em Ciência de Dados e Big Data
+PUC Minas, 2019
+
+###### {{< fa graduation-cap >}}	Bacharel Chiência da Computação
+Universidade Fumec, 2007
+
+
+{{< fa chart-line >}} 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+## experiência
+
+
+##### {{< fa database >}}	DBA Db2
+Administrador de banco de dados Db2 para plataformas Linux, Unix e Windows - IBM / Kyndryl
+
+

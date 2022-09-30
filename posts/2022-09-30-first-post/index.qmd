@@ -1,0 +1,34 @@
+---
+title: "Why create presentation slides about blogging when you can just blog about it instead?"
+description: |
+  I started putting together some slides on the whys and hows of blogging using {distill} when I realized...maybe I've just found the content for my first blog post??
+author:
+  - name: Samantha Csik 
+    orcid: 0000-0002-5300-3075
+    url: https://samanthacsik.github.io/
+    affiliation: The National Center for Ecological Analysis & Synthesis
+    affiliation-url: https://www.nceas.ucsb.edu/
+date: 09-24-2021
+slug: csik2021firstBlog
+categories: [distill, R]
+image: barney_blog.gif
+---
+
+
+I am a total blog newb.
+
+BUT we all have to start somewhere. And my somewhere is leading a mini-workshop in T-6 days for our first Master of Environmental Data Science (MEDS) cohort (read more about this awesome new program here) on why blogging as data scientists is an important and valuable skill to practice, what a good blog post might look like, and some of the technical aspects of creating blog posts using the {distill} package.
+
+I originally set off on my self-education journey by digging into other data science-related blogs and throwing together some slides about what I found. I even practiced creating a fake blog post on my own (and very much still under development) personal website in case anyone asked me to walk them through the steps (I can’t look like I don’t know what I’m doing now, right??).
+
+Ten slides deep and then it struck me – I was creating a presentation on how to blog without ever actually creating my own blog post?? Dammit. Doesn’t quite feel right. So here we are. Baby’s first blog post ~about blog posts~. I’d say this first post is half meant to serve our MEDS students as they embark on their fall quarter (and will surely be asked to blog every now and again) and half meant to be the catalyst I so desperately needed to finally put a little bit of writing out there in the data science world.
+
+So here we go! I’ll start by sharing examples of different blogs that I think demonstrate a few creative ways to format and publish data science content. Then I’ll review some of the cool things you can do with {distill} to customize your own beautiful posts.
+
+## I. Why blog?
+Data science blogging has become pretty darn popular in recent years, and for good reason. It can help you to build your online professional profile, enhance your communication skills, stay atop the latest and greatest trends and tools, connect with other data scientists, and even solicit feedback from those in the community.
+
+But arguably one of the most valuable reasons to blog is to get a whole lot better at doing whatever it is you want to write about. You’ve probably heard some version of the saying, “The best way to learn something is to teach it to others” – not only do I find this to be true of myself, but there’s also science1 to back this up!
+
+Still, getting started can be a bit intimidating (I’m only doing this for the first time now myself). It an attempt to make it a little less so for the next blogger-to-be, I have tried to gather some ideas, instructions, and inspiration to get things going. If nothing else, I think heeding the advice of this tweet2 is a pretty good place to start:
+

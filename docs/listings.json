@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/2022-09-30-first-post/index.html"
+    ]
+  },
+  {
+    "listing": "/notas.html",
+    "items": [
+      "/notas/2022-02-18-intro-to-linux/index.html"
+    ]
+  }
+]

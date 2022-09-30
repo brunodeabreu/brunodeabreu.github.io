@@ -1,19 +1,51 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "mysite"
+  # cookie-consent: 
+  #   type: express 
+  #   style: headline
+  #   palette: dark
+  favicon: img/favicon.png
+  title: "Bruno de Abreu Machado"
   navbar:
-    left:
+    title: false
+    logo: img/favicon.png
+    logo-alt: "Bruno de Abreu Machado"
+    right:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: home
+      - about.qmd  
+      - href: notas.qmd
+        text: cursos notas
+      - posts.qmd
+      - href: CV/resume.pdf
+        text: cv
+      - icon: github
+        href: https://github.com/brunodeabreu
+      - icon: twitter
+        href: https://twitter.com/__bmachado__
+      - icon : linkedin 
+        href: https://www.linkedin.com/in/brunodeabreu/
+  page-footer: 
+    background: light
+    left: 
+      - "Copyright 2022, Bruno de Abreu Machado"
+    right: 
+      - icon: github
+        href: https://github.com/brunodeabreu
+      - icon: twitter
+        href: https://twitter.com/__bmachado__
+  reader-mode: true
+  repo-url: https://github.com/brunodeabreu/SitePessoal
+  repo-actions: [edit, issue]
 
 format:
   html:
-    theme: cosmo
+    page-layout: full
+    theme: 
+      - green_theme.scss
     css: styles.css
+    mainfont: Nunito
     toc: true
-
-
-

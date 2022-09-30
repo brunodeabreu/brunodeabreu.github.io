@@ -4,5 +4,17 @@
   },
   "index.qmd": {
     "index.html": "7f53c1de"
+  },
+  "posts.qmd": {
+    "posts.html": "12a1806c"
+  },
+  "posts/2022-09-30-first-post/index.qmd": {
+    "index.html": "20bda915"
+  },
+  "notas.qmd": {
+    "notas.html": "c6a37ad2"
+  },
+  "notas/2022-02-18-intro-to-linux/index.qmd": {
+    "index.html": "3b9a504b"
   }
 }
