@@ -11,7 +11,7 @@
     "href": "posts.html",
     "title": "posts",
     "section": "",
-    "text": "distill\n\n\nR\n\n\n\n\nI started putting together some slides on the whys and hows of blogging using {distill} when I realized…maybe I’ve just found the content for my first blog post??\n\n\n\n\n\n\nSep 24, 2021\n\n\nSamantha Csik\n\n\n\n\n\n\nNo matching items"
+    "text": "Why create presentation slides about blogging when you can just blog about it instead?\n\n\n\n\n\n\n\ndistill\n\n\nR\n\n\n\n\nI started putting together some slides on the whys and hows of blogging using {distill} when I realized…maybe I’ve just found the content for my first blog post??\n\n\n\n\n\n\nSep 24, 2021\n\n\nSamantha Csik\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2022-09-30-first-post/index.html",
@@ -32,7 +32,7 @@
     "href": "notas.html",
     "title": "Cursos & Treinamentos",
     "section": "",
-    "text": "MEDS\n\n\nR\n\n\n\na hands-on coding workshop on how to build a shiny app\n\n\n\nSamantha Csik\n\n\nFeb 18, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Intro to Linux\n\n\n\nMEDS\n\n\nR\n\n\n\na hands-on coding workshop on how to build a shiny app\n\n\n\nSamantha Csik\n\n\nFeb 18, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#experiência",
@@ -46,6 +46,13 @@
     "href": "about.html",
     "title": "about",
     "section": "",
-    "text": "Eu e minha esposa temos um hobby que contruimos em comum de viajar, separar um momento para recarregar as energias\n minha distração\n correr"
+    "text": "meu hobby\nEu e minha esposa temos um hobby que contruimos em comum de viajar, separar um momento para recarregar as energias\n minha distração\n correr"
+  },
+  {
+    "objectID": "notas/2022-02-18-intro-to-linux/index.html",
+    "href": "notas/2022-02-18-intro-to-linux/index.html",
+    "title": "Intro to Linux",
+    "section": "",
+    "text": "test\n\nTEst"
   }
 ]

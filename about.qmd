@@ -5,7 +5,9 @@ subtitle: "~ a bit more about me outside of my job ~"
 
 {{< fa plane-departure >}} meu hobby
 
-Eu e minha esposa temos um hobby que contruimos em comum de viajar, separar um momento para recarregar as energias
+Eu e minha esposa temos um hobby que contruimos em comum de viajar, separar um momento para recarregar as energias.
+
+;)
 
 
 
