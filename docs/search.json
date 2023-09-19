@@ -32,7 +32,7 @@
     "href": "notas.html",
     "title": "Cursos & Treinamentos",
     "section": "",
-    "text": "Intro to Linux\n\n\n\nMEDS\n\n\nR\n\n\n\na hands-on coding workshop on how to build a shiny app\n\n\n\nSamantha Csik\n\n\nFeb 18, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "1 Deep learning for Coders fast.ai - Cap 01\n\n\n\nDL\n\n\npython\n\n\nfastai\n\n\n\nPre-Work : a hands-on coding course from fast.ai\n\n\n\nBruno\n\n\nSep 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1 Deep learning for Coders fast.ai - Prep-Work\n\n\n\nDL\n\n\npython\n\n\nfastai\n\n\n\nPre-Work : a hands-on coding course from fast.ai\n\n\n\nBruno\n\n\nSep 1, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#experiência",
@@ -46,7 +46,7 @@
     "href": "about.html",
     "title": "about",
     "section": "",
-    "text": "meu hobby\nEu e minha esposa temos um hobby que contruimos em comum de viajar, separar um momento para recarregar as energias\n minha distração\n correr"
+    "text": "meu hobby\nEu e minha esposa temos um hobby que contruimos em comum de viajar, separar um momento para recarregar as energias.\n;)\n minha distração\n correr"
   },
   {
     "objectID": "notas/2022-02-18-intro-to-linux/index.html",
@@ -54,5 +54,264 @@
     "title": "Intro to Linux",
     "section": "",
     "text": "test\n\nTEst"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html",
+    "title": "#1 Deep learning for Coders fast.ai - Prep-Work",
+    "section": "",
+    "text": "On Windows we can install PowerShell and WSL using, the first time you\nwsl --install\n\nTips :\n\nTerminal Full Screen : &lt;Alt+Enter&gt;\nSwitch between users : sudo -u &lt;user&gt; -i\nCheck version and python location : which python\nInstall everything in homedir to do not mix the system python/files with our version of python used to DEV and experiment\n\n\n\n\nTo install tmux sudo apt install tmux\n\nhttps://tmuxcheatsheet.com/\nCtrl + b + % : Divide terminal in the middle vertical\nCtrl + b + \" : Divide terminal in the middle horizontal\nCtrl + b + direction : Move between terminals\nCtrl + b + z : zoom in or zoom out a spefic terminal\nCtrl + d : close"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#setup-conda-install",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#setup-conda-install",
+    "title": "#1 Deep learning for Coders fast.ai - Prep-Work",
+    "section": "3.1 Setup conda install",
+    "text": "3.1 Setup conda install\nTo setup fastai in our notebook Github-Fastsetup\n\nRun the wget to donwload the setupconda.sh and install\n\nwget https://raw.githubusercontent.com/fastai/fastsetup/master/setup-conda.sh\n\nbash setup-conda.sh"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#create-new-repo",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#create-new-repo",
+    "title": "#1 Deep learning for Coders fast.ai - Prep-Work",
+    "section": "5.1 Create new repo",
+    "text": "5.1 Create new repo\nThe below figure describe how to create a new repo we can :\n\nMake the repo private or public\nAdd a readme file\nConfigure .gitignore\nChoose a license\n\n\n\n\nCreate new repo\n\n\n\n\n\n\n\n\nImportant\n\n\n\nDO NOT share password or keys on github"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#section",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#section",
+    "title": "Deep learning for Coders fast.ai - Prep-Work",
+    "section": "5.2",
+    "text": "5.2"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#configure-ssh-key-o-github",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#configure-ssh-key-o-github",
+    "title": "Deep learning for Coders fast.ai - Prep-Work",
+    "section": "5.2 Configure SSH Key o Github",
+    "text": "5.2 Configure SSH Key o Github\nSTEPS :\n\nOn terminal create a public key ssh-keygen, it will create public (id_rsa.pub) and private key (id_rsa)\nIn github.com/settings/ssh/ click in New SSH Key and add the content of id_rsa.pub"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#configure-ssh-key-o-github-and-clone-.git-repository",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#configure-ssh-key-o-github-and-clone-.git-repository",
+    "title": "#1 Deep learning for Coders fast.ai - Prep-Work",
+    "section": "5.2 Configure SSH Key o Github and clone .git repository",
+    "text": "5.2 Configure SSH Key o Github and clone .git repository\nSTEPS :\n\nOn terminal create a public key ssh-keygen, it will create public (id_rsa.pub) and private (id_rsa) keys\nIn github.com/settings/ssh/ click in New SSH Key and add the content of id_rsa.pub\nNow you will be able to clone the .git repository and save your changes"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#commit-push-pull-status",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#commit-push-pull-status",
+    "title": "#1 Deep learning for Coders fast.ai - Prep-Work",
+    "section": "5.3 Commit, push, pull, status",
+    "text": "5.3 Commit, push, pull, status\nThe complete list of git commands\n\nCommit : git commit -m &lt;message&gt;\nPush : git push\nPull : git pull\nadd : git add &lt;file&gt;\nremove : git rm &lt;file&gt;\nstatus : git status"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#tmux",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#tmux",
+    "title": "#1 Deep learning for Coders fast.ai - Prep-Work",
+    "section": "",
+    "text": "To install tmux sudo apt install tmux\n\nhttps://tmuxcheatsheet.com/\nCtrl + b + % : Divide terminal in the middle vertical\nCtrl + b + \" : Divide terminal in the middle horizontal\nCtrl + b + direction : Move between terminals\nCtrl + b + z : zoom in or zoom out a spefic terminal\nCtrl + d : close"
+  },
+  {
+    "objectID": "notas/2023-09-01-pre-work-deep-learning/index.html#basic-cmds-commit-push-pull-status",
+    "href": "notas/2023-09-01-pre-work-deep-learning/index.html#basic-cmds-commit-push-pull-status",
+    "title": "#1 Deep learning for Coders fast.ai - Prep-Work",
+    "section": "5.3 Basic Cmds : Commit, push, pull, status",
+    "text": "5.3 Basic Cmds : Commit, push, pull, status\nThe complete list of git commands\n\nCommit : git commit -m &lt;message&gt;\nPush : git push\nPull : git pull\nadd : git add &lt;file&gt;\nremove : git rm &lt;file&gt;\nstatus : git status"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Kaggle notebook\n\n\nOn kaggle creare a notebook : File/New notebook\n\n\n\n\nInstall fastai and gradio\n!pip install -Uqq fastai\n!pip install gradio\n\n\n\n\nImport fastai core and some libs\nfrom fastcore.all import *\nimport time\nfrom fastdownload import download_url\nfrom fastai.vision.all import *\nfrom fastai.vision.widgets import *\nimport pathlib\n\n\n\nCreate a function to search images on DDG\ndef search_images(term, max_images=200):\n    url = 'https://duckduckgo.com/'\n    res = urlread(url,data={'q':term})\n    searchObj = re.search(r'vqd=([\\d-]+)\\&', res)\n    requestUrl = url + 'i.js'\n    params = dict(l='us-en', o='json', q=term, vqd=searchObj.group(1), f=',,,', p='1', v7exp='a')\n    urls,data = set(),{'next':1}\n    while len(urls)&lt;max_images and 'next' in data:\n        data = urljson(requestUrl,data=params)\n        urls.update(L(data['results']).itemgot('image'))\n        requestUrl = url + data['next']\n        time.sleep(0.2)\n    return L(urls)[:max_images]\n\n\n\nTry use the function and search for pictures that you are going to work for instance:\n\nbirds vs forest : to classify birds\nBlack vs grizzly vs ted bear\ndamage car vs car\nTypes of clouds : ‘cirrus’, ‘stratus’, ‘cumulus’\nis Michael jackson alive?\n\nMichael look alike person\nurls = search_images('look alike michael jackson', max_images=1)\n\ndest = 'FakeMichael.jpg'\ndownload_url(urls[0], dest, show_progress=False)\n\nim = Image.open(dest)\nim.to_thumb(256,256)\nMichael Jackson\ndownload_url(search_images('Michael jackson', max_images=1)[0], 'michael.jpg', show_progress=False)\nImage.open('michael.jpg').to_thumb(256,256)\n\n\n\n\nLets do a for loop to download more images\nsearches = 'Michael jackson','look alike michael jackson'\npath = Path('Michael_or_not')\n\nfrom time import sleep\n\nfor o in searches:\n    dest = (path/o)\n    dest.mkdir(exist_ok=True, parents=True)\n    download_images(dest, urls=search_images(f'{o} photo'))\n    sleep(10)  # Pause between searches to avoid over-loading server\n    download_images(dest, urls=search_images(f'{o} sun photo'))\n    sleep(10)\n    download_images(dest, urls=search_images(f'{o} shade photo'))\n    sleep(10)\n    resize_images(path/o, max_size=400, dest=path/o)\n\n\n\n\nRemove failed images\nfailed = verify_images(get_image_files(path))\nfailed.map(Path.unlink)\nlen(failed)\n\n\n\n\nCreate a data block\n\ndls = DataBlock(\n    blocks=(ImageBlock, CategoryBlock), \n    get_items=get_image_files, \n    splitter=RandomSplitter(valid_pct=0.2, seed=42),\n    get_y=parent_label,\n    item_tfms=[Resize(192, method='squish')]\n).dataloaders(path, bs=32)\n\ndls.show_batch(max_n=6)\n\n\n\nLets create the learn or model and fine tune\nlearn = vision_learner(dls, resnet18, metrics=error_rate)\nlearn.fine_tune(3)\n\n\n\nis_michael,_,probs = learn.predict(PILImage.create('FakeMichael.jpg'))\nprint(f\"This is a: {is_michael}.\")\nprint(f\"Probability He is Michael: {probs[0]:.4f}\")\nThis is a: look alike michael jackson. Probability He is Michael: 0.0086\n\n\n\nlearn.path = Path('.')\nlearn.export()\n\nTo Download from kaggle:\n\n\n\nDownload from kaggle\n\n\n\n\n\nAccess [huggingface.co)[https://huggingface.co/spaces], click in NEW and select Space, s this is similar github, add the name, select SDK gradio, hardware,license and create, after that you going to receive git clone command and instructions to create your gradio app.py\n\n\n\nCreate new spaces\n\n\n\n\n\n\nClone hugging face repo git clone &lt;repo&gt;\ncd &lt;repo_name&gt;\nCreate an app.py on the app you need to :\n\n\nimport libs\nload model\ncrete a list of categories\ncreate a function to classify, this function will call the .predict and perform the prediction\nCreate a button to input new images\nlanch the gradio interface\n\nSample\n__all__ = [ 'learn', 'classify_image', 'categories', 'image', 'label', 'examples', 'intf']\n\n# import libs\nfrom fastai.vision.all import *\nimport gradio as gr\n\n\n# load model\nlearn = load_learner('export.pkl')\n\n# list of categories\ncategories = ('Michael jackson', 'look alike michael jackson')\n\n## Classify func\ndef classify_image(img):\n    pred,idx,probs = learn.predict(img)\n    return dict(zip(categories, map(float,probs)))\n\n# input  new image\nimage = gr.inputs.Image(shape=(192, 192))\nlabel = gr.outputs.Label()\nexamples = ['michael.jpg', 'fakemichael.jpg']\n\n## interface\nintf = gr.Interface(fn=classify_image, inputs=image, outputs=label, examples=examples)\nintf.launch(inline=False)\n\n\n\nInput two sample images of each category\nCreate a requirements.txt to build the container with neecessary libs fastai and gradio\nCommit and add the files to repo, you will see something like :\n\n\n\n\nRepo\n\n\n\n\n\nIf the container has been create successfully you will see the app on APP link\n\n\n\nRepo\n\n\nTRY :\nis Michael alive ?"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-1",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-1",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "On kaggle creare a notebook : File/New notebook"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-2",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-2",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Install fast ai\n!pip install -Uqq fastai"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-3",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-3",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Import fastai core and some libs\nfrom fastcore.all import *\nimport time\nfrom fastdownload import download_url\nfrom fastai.vision.all import *\nfrom fastai.vision.widgets import *\nimport pathlib"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-4",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-4",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Create a function to search images on DDG\ndef search_images(term, max_images=200):\n    url = 'https://duckduckgo.com/'\n    res = urlread(url,data={'q':term})\n    searchObj = re.search(r'vqd=([\\d-]+)\\&', res)\n    requestUrl = url + 'i.js'\n    params = dict(l='us-en', o='json', q=term, vqd=searchObj.group(1), f=',,,', p='1', v7exp='a')\n    urls,data = set(),{'next':1}\n    while len(urls)&lt;max_images and 'next' in data:\n        data = urljson(requestUrl,data=params)\n        urls.update(L(data['results']).itemgot('image'))\n        requestUrl = url + data['next']\n        time.sleep(0.2)\n    return L(urls)[:max_images]"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-5",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-5",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Try use the function and search for pictures that you are going to work for instance:\n\nbirds vs forest : to classify birds\nBlack vs grizzly vs ted bear\ndamage car vs car\nTypes of clouds : ‘cirrus’, ‘stratus’, ‘cumulus’\nis Michael jackson alive?\n\nEMU\nurls = search_images('look alike michael jackson', max_images=1)\n\ndest = 'FakeMichael.jpg'\ndownload_url(urls[0], dest, show_progress=False)\n\nim = Image.open(dest)\nim.to_thumb(256,256)\nEMA\ndownload_url(search_images('Michael jackson', max_images=1)[0], 'michael.jpg', show_progress=False)\nImage.open('michael.jpg').to_thumb(256,256)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-6",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-6",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Lets do a for loop to download more images\nsearches = 'Michael jackson','look alike michael jackson'\npath = Path('Michael_or_not')\n\nfrom time import sleep\n\nfor o in searches:\n    dest = (path/o)\n    dest.mkdir(exist_ok=True, parents=True)\n    download_images(dest, urls=search_images(f'{o} photo'))\n    sleep(10)  # Pause between searches to avoid over-loading server\n    download_images(dest, urls=search_images(f'{o} sun photo'))\n    sleep(10)\n    download_images(dest, urls=search_images(f'{o} shade photo'))\n    sleep(10)\n    resize_images(path/o, max_size=400, dest=path/o)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-8",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-8",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Remove failed images\nfailed = verify_images(get_image_files(path))\nfailed.map(Path.unlink)\nlen(failed)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-9",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-9",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Create a data loader\n\ndls = DataBlock(\n    blocks=(ImageBlock, CategoryBlock), \n    get_items=get_image_files, \n    splitter=RandomSplitter(valid_pct=0.2, seed=42),\n    get_y=parent_label,\n    item_tfms=[Resize(192, method='squish')]\n).dataloaders(path, bs=32)\n\ndls.show_batch(max_n=6)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-10",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-10",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Lets create the learn or model and fine tune\nlearn = vision_learner(dls, resnet18, metrics=error_rate)\nlearn.fine_tune(3)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#is-michael-jackson-alive",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#is-michael-jackson-alive",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Kaggle notebook\n\n\nOn kaggle creare a notebook : File/New notebook"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-2-install-fastai",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-2-install-fastai",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Install fast ai\n!pip install -Uqq fastai"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-3-import-libs",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-3-import-libs",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Import fastai core and some libs\nfrom fastcore.all import *\nimport time\nfrom fastdownload import download_url\nfrom fastai.vision.all import *\nfrom fastai.vision.widgets import *\nimport pathlib"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-4-create-search-function",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-4-create-search-function",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Create a function to search images on DDG\ndef search_images(term, max_images=200):\n    url = 'https://duckduckgo.com/'\n    res = urlread(url,data={'q':term})\n    searchObj = re.search(r'vqd=([\\d-]+)\\&', res)\n    requestUrl = url + 'i.js'\n    params = dict(l='us-en', o='json', q=term, vqd=searchObj.group(1), f=',,,', p='1', v7exp='a')\n    urls,data = set(),{'next':1}\n    while len(urls)&lt;max_images and 'next' in data:\n        data = urljson(requestUrl,data=params)\n        urls.update(L(data['results']).itemgot('image'))\n        requestUrl = url + data['next']\n        time.sleep(0.2)\n    return L(urls)[:max_images]"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-5-test-the-search-function",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-5-test-the-search-function",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Try use the function and search for pictures that you are going to work for instance:\n\nbirds vs forest : to classify birds\nBlack vs grizzly vs ted bear\ndamage car vs car\nTypes of clouds : ‘cirrus’, ‘stratus’, ‘cumulus’\nis Michael jackson alive?\n\nMichael look alike person\nurls = search_images('look alike michael jackson', max_images=1)\n\ndest = 'FakeMichael.jpg'\ndownload_url(urls[0], dest, show_progress=False)\n\nim = Image.open(dest)\nim.to_thumb(256,256)\nMichael Jackson\ndownload_url(search_images('Michael jackson', max_images=1)[0], 'michael.jpg', show_progress=False)\nImage.open('michael.jpg').to_thumb(256,256)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-6-download-images",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-6-download-images",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Lets do a for loop to download more images\nsearches = 'Michael jackson','look alike michael jackson'\npath = Path('Michael_or_not')\n\nfrom time import sleep\n\nfor o in searches:\n    dest = (path/o)\n    dest.mkdir(exist_ok=True, parents=True)\n    download_images(dest, urls=search_images(f'{o} photo'))\n    sleep(10)  # Pause between searches to avoid over-loading server\n    download_images(dest, urls=search_images(f'{o} sun photo'))\n    sleep(10)\n    download_images(dest, urls=search_images(f'{o} shade photo'))\n    sleep(10)\n    resize_images(path/o, max_size=400, dest=path/o)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-8-clean-failed-images",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-8-clean-failed-images",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Remove failed images\nfailed = verify_images(get_image_files(path))\nfailed.map(Path.unlink)\nlen(failed)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-9-create-data-block",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-9-create-data-block",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Create a data block\n\ndls = DataBlock(\n    blocks=(ImageBlock, CategoryBlock), \n    get_items=get_image_files, \n    splitter=RandomSplitter(valid_pct=0.2, seed=42),\n    get_y=parent_label,\n    item_tfms=[Resize(192, method='squish')]\n).dataloaders(path, bs=32)\n\ndls.show_batch(max_n=6)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-10-train-the-model",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-10-train-the-model",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Lets create the learn or model and fine tune\nlearn = vision_learner(dls, resnet18, metrics=error_rate)\nlearn.fine_tune(3)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-11-export-and-download-the-model",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-11-export-and-download-the-model",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "learn.path = Path('.')\nlearn.export()\n\nTo Download from kaggle:\n\n\n\nDownload from kaggle"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-2-install-packages",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-2-install-packages",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Install fastai and gradio\n!pip install -Uqq fastai\n!pip install gradio"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-11-test-the-model",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-11-test-the-model",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "is_michael,_,probs = learn.predict(PILImage.create('FakeMichael.jpg'))\nprint(f\"This is a: {is_michael}.\")\nprint(f\"Probability He is Michael: {probs[0]:.4f}\")\nThis is a: look alike michael jackson. Probability He is Michael: 0.0086"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-12-create-spaces-on-huggingface.co",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-12-create-spaces-on-huggingface.co",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Access [huggingface.co)[https://huggingface.co/spaces], click in NEW and select Space, s this is similar github, add the name, select SDK gradio, hardware,license and create, after that you going to receive git clone command and instructions to create your gradio app.py\n\n\n\nCreate new spaces"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-13-create-the-app",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-13-create-the-app",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Clone hugging face repo git clone &lt;repo&gt;\ncd &lt;repo_name&gt;\nCreate an app.py on the app you need to :\n\n\nimport libs\nload model\ncrete a list of categories\ncreate a function to classify, this function will call the .predict and perform the prediction\nCreate a button to input new images\nlanch the gradio interface\n\nSample\n__all__ = [ 'learn', 'classify_image', 'categories', 'image', 'label', 'examples', 'intf']\n\n# import libs\nfrom fastai.vision.all import *\nimport gradio as gr\n\n\n# load model\nlearn = load_learner('export.pkl')\n\n# list of categories\ncategories = ('Michael jackson', 'look alike michael jackson')\n\n## Classify func\ndef classify_image(img):\n    pred,idx,probs = learn.predict(img)\n    return dict(zip(categories, map(float,probs)))\n\n# input  new image\nimage = gr.inputs.Image(shape=(192, 192))\nlabel = gr.outputs.Label()\nexamples = ['michael.jpg', 'fakemichael.jpg']\n\n## interface\nintf = gr.Interface(fn=classify_image, inputs=image, outputs=label, examples=examples)\nintf.launch(inline=False)"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-12-export-and-download-the-model",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-12-export-and-download-the-model",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "learn.path = Path('.')\nlearn.export()\n\nTo Download from kaggle:\n\n\n\nDownload from kaggle"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-13-create-spaces-on-huggingface.co",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-13-create-spaces-on-huggingface.co",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Access [huggingface.co)[https://huggingface.co/spaces], click in NEW and select Space, s this is similar github, add the name, select SDK gradio, hardware,license and create, after that you going to receive git clone command and instructions to create your gradio app.py\n\n\n\nCreate new spaces"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-14-create-the-app",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-14-create-the-app",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "Clone hugging face repo git clone &lt;repo&gt;\ncd &lt;repo_name&gt;\nCreate an app.py on the app you need to :\n\n\nimport libs\nload model\ncrete a list of categories\ncreate a function to classify, this function will call the .predict and perform the prediction\nCreate a button to input new images\nlanch the gradio interface\n\nSample\n__all__ = [ 'learn', 'classify_image', 'categories', 'image', 'label', 'examples', 'intf']\n\n# import libs\nfrom fastai.vision.all import *\nimport gradio as gr\n\n\n# load model\nlearn = load_learner('export.pkl')\n\n# list of categories\ncategories = ('Michael jackson', 'look alike michael jackson')\n\n## Classify func\ndef classify_image(img):\n    pred,idx,probs = learn.predict(img)\n    return dict(zip(categories, map(float,probs)))\n\n# input  new image\nimage = gr.inputs.Image(shape=(192, 192))\nlabel = gr.outputs.Label()\nexamples = ['michael.jpg', 'fakemichael.jpg']\n\n## interface\nintf = gr.Interface(fn=classify_image, inputs=image, outputs=label, examples=examples)\nintf.launch(inline=False)\n\n\n\nInput two sample images of each category\nCreate a requirements.txt to build the container with neecessary libs fastai and gradio\nCommit and add the files to repo, you will see something like :\n\n\n\n\nRepo"
+  },
+  {
+    "objectID": "notas/2023-09-06-intro-deep-learning/index.html#step-15-test-the-app",
+    "href": "notas/2023-09-06-intro-deep-learning/index.html#step-15-test-the-app",
+    "title": "#2 Deep learning for Coders fast.ai - Cap 01",
+    "section": "",
+    "text": "If the container has been create successfully you will see the app on APP link\n\n\n\nRepo\n\n\nTRY :\nis Michael alive ?"
   }
 ]

@@ -11,7 +11,7 @@ author:
 date: 09-24-2021
 slug: csik2021firstBlog
 categories: [distill, R]
-image: barney_blog.gif
+#image: barney_blog.gif
 ---
 
 

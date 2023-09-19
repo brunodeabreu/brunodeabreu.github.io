@@ -30,7 +30,7 @@ Eu sou Bruno, trabalho com suporte ao banco de dados Db2 UDB  na [Kyndryl](https
 ### educação
 
 ###### {{< fa graduation-cap >}}  Estatística
-Universidade Amhembi Morumbi, 6 Período
+Universidade Amhembi Morumbi, 8 Período
 
 ###### {{< fa graduation-cap >}} Pós Graduado em Ciência de Dados e Big Data
 PUC Minas, 2019
