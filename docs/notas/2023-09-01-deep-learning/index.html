@@ -8,7 +8,7 @@
 
 <meta name="author" content="Bruno">
 <meta name="dcterms.date" content="2023-09-01">
-<meta name="description" content="Pre-Work : a hands-on coding course from fast.ai">
+<meta name="description" content="A hands-on coding course from fast.ai">
 
 <title>Bruno de Abreu Machado - Deep learning for Coders fast.ai</title>
 <style>
@@ -144,7 +144,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prep-work" id="toc-prep-work" class="nav-link active" data-scroll-target="#prep-work">Prep-Work</a>
+  <li><a href="#cap-01" id="toc-cap-01" class="nav-link active" data-scroll-target="#cap-01">Cap 01</a>
+  <ul class="collapse">
+  <li><a href="#notes-from-video-1" id="toc-notes-from-video-1" class="nav-link" data-scroll-target="#notes-from-video-1">Notes from video 1</a></li>
+  </ul></li>
+  <li><a href="#prep-work" id="toc-prep-work" class="nav-link" data-scroll-target="#prep-work">Prep-Work</a>
   <ul class="collapse">
   <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal">1. Terminal</a>
   <ul class="collapse">
@@ -169,30 +173,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">10. Google Colab</a></li>
   <li><a href="#best-option-to-access-the-book-and-notebooks" id="toc-best-option-to-access-the-book-and-notebooks" class="nav-link" data-scroll-target="#best-option-to-access-the-book-and-notebooks">11. Best option to access the book and notebooks</a></li>
   </ul></li>
-  <li><a href="#cap-01" id="toc-cap-01" class="nav-link" data-scroll-target="#cap-01">Cap 01</a>
-  <ul class="collapse">
-  <li><a href="#step-by-step-to-create-the-first-model" id="toc-step-by-step-to-create-the-first-model" class="nav-link" data-scroll-target="#step-by-step-to-create-the-first-model">Step by step to create the first model</a>
-  <ul class="collapse">
-  <li><a href="#is-michael-jackson-alive" id="toc-is-michael-jackson-alive" class="nav-link" data-scroll-target="#is-michael-jackson-alive">Is Michael Jackson alive ?</a></li>
-  <li><a href="#step-2-install-packages" id="toc-step-2-install-packages" class="nav-link" data-scroll-target="#step-2-install-packages">STEP 2: install packages</a></li>
-  <li><a href="#step-3-import-libs" id="toc-step-3-import-libs" class="nav-link" data-scroll-target="#step-3-import-libs">STEP 3: import libs</a></li>
-  <li><a href="#step-4-create-search-function" id="toc-step-4-create-search-function" class="nav-link" data-scroll-target="#step-4-create-search-function">STEP 4: create search function</a></li>
-  <li><a href="#step-5-test-the-search-function" id="toc-step-5-test-the-search-function" class="nav-link" data-scroll-target="#step-5-test-the-search-function">STEP 5: Test the search function</a></li>
-  <li><a href="#step-6-download-images" id="toc-step-6-download-images" class="nav-link" data-scroll-target="#step-6-download-images">STEP 6 : Download images</a></li>
-  <li><a href="#step-8-clean-failed-images" id="toc-step-8-clean-failed-images" class="nav-link" data-scroll-target="#step-8-clean-failed-images">STEP 8: clean failed images</a></li>
-  <li><a href="#step-9-create-data-block" id="toc-step-9-create-data-block" class="nav-link" data-scroll-target="#step-9-create-data-block">STEP 9: Create data block</a></li>
-  <li><a href="#step-10-train-the-model" id="toc-step-10-train-the-model" class="nav-link" data-scroll-target="#step-10-train-the-model">STEP 10: Train the model</a></li>
-  <li><a href="#step-11-test-the-model" id="toc-step-11-test-the-model" class="nav-link" data-scroll-target="#step-11-test-the-model">STEP 11: Test the model</a></li>
-  <li><a href="#step-12-export-and-download-the-model" id="toc-step-12-export-and-download-the-model" class="nav-link" data-scroll-target="#step-12-export-and-download-the-model">STEP 12: Export and Download the model</a></li>
-  <li><a href="#step-13-create-spaces-on-huggingface.co" id="toc-step-13-create-spaces-on-huggingface.co" class="nav-link" data-scroll-target="#step-13-create-spaces-on-huggingface.co">STEP 13 : Create <code>spaces</code> on huggingFace.co</a></li>
-  <li><a href="#step-14-create-the-app" id="toc-step-14-create-the-app" class="nav-link" data-scroll-target="#step-14-create-the-app">STEP 14: Create the app</a></li>
-  <li><a href="#step-15-test-the-app" id="toc-step-15-test-the-app" class="nav-link" data-scroll-target="#step-15-test-the-app">STEP 15: Test the APP</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#cap-2" id="toc-cap-2" class="nav-link" data-scroll-target="#cap-2">Cap 2</a></li>
-  <li><a href="#cap-3" id="toc-cap-3" class="nav-link" data-scroll-target="#cap-3">Cap 3</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/brunodeabreu/SitePessoal/edit/main/notas/2023-09-01-pre-work-deep-learning/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/brunodeabreu/SitePessoal/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/brunodeabreu/SitePessoal/edit/main/notas/2023-09-01-deep-learning/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/brunodeabreu/SitePessoal/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
@@ -209,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    <p>Pre-Work : a hands-on coding course from fast.ai</p>
+    <p>A hands-on coding course from fast.ai</p>
   </div>
 </div>
 
@@ -236,6 +218,116 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<!---# Cap 2 -->
+<section id="cap-01" class="level1">
+<h1>Cap 01</h1>
+<section id="notes-from-video-1" class="level2">
+<h2 class="anchored" data-anchor-id="notes-from-video-1">Notes from video 1</h2>
+<p><strong>Motivation</strong> :</p>
+<blockquote class="blockquote">
+<p><em>How to build a compyter vision classifier ?</em></p>
+</blockquote>
+<ul>
+<li>A pixel is recognized by RGB number, that going to be an input to computer vision model</li>
+<li>To train a colection of image we need a <strong>DataBlock</strong>, this provides to <em>fastai</em> all the information it needs to create a Computer Vision model</li>
+<li>When we create the model using <code>visual_learner</code> it going to learn from each image that you input</li>
+<li>To predict and check we call <code>.predict</code> it will return a probability</li>
+</ul>
+<p><em>How the model learn ?</em></p>
+<ul>
+<li>Each layer will learn small things, like diagonal, circle ….</li>
+</ul>
+<p><em>Fastai Lib</em></p>
+<ul>
+<li>Builded on top of pyTorch</li>
+<li>We can use <a href="https://colab.research.google.com/">colab</a>, <a href="https://www.paperspace.com/artificial-intelligence">gradient</a>, <a href="https://aws.amazon.com/pt/blogs/machine-learning/building-training-and-deploying-fastai-models-with-amazon-sagemaker/">sagemaker</a>, <a href="https://www.kaggle.com/code">kaggle</a> to develop</li>
+<li>Samples simple computer vision classifier:
+<ul>
+<li><a href="https://www.kaggle.com/code/jhoward/is-it-a-bird-creating-a-model-from-your-own-data">Is it a bird ?</a></li>
+<li><a href="https://www.kaggle.com/brunodeabreu/michael">Is Michael Jackson Alive ?</a></li>
+</ul></li>
+</ul>
+<p><em>DataBlock</em></p>
+<blockquote class="blockquote">
+<p>How do I get <em>“this data”</em> into my model ?</p>
+</blockquote>
+<p>We create a <code>DataBlock</code> and according the structure and options fastai will know the type of model to create, we need to inform:</p>
+<ul>
+<li>What kind of input do we have ? <em>ImageBlock</em></li>
+<li>What kind of output ? <em>CategoryBlock</em></li>
+<li>Provide a list of ALL image files and path <em>get_image_files</em></li>
+<li>Reserve some data to validate <em>RandomSplitter</em></li>
+<li>How do we know the correct label of photo <em>parent_label</em></li>
+<li>Transform the image <em>Resize</em></li>
+</ul>
+<p>This will create a <em>DataBlock</em> using a pyTorch function <code>dataloaders</code>, this is what pyTorch interate to get bunch of data</p>
+<pre><code>dls = DataBlock(
+    blocks=(ImageBlock, CategoryBlock), 
+    get_items=get_image_files, 
+    splitter=RandomSplitter(valid_pct=0.2, seed=42),
+    get_y=parent_label,
+    item_tfms=[Resize(192, method='squish')]
+).dataloaders(path, bs=32)
+
+dls.show_batch(max_n=6)</code></pre>
+<p>To read more <a href="https://docs.fast.ai/tutorial.datablock.html">https://docs.fast.ai/tutorial.datablock.html</a></p>
+<p>On the end we will have a <strong>dls</strong> <em>(dataloaders)</em> object that contains iterators where pyTorch can run through to grab batches of random data <em>(training and validation )</em> images</p>
+<p>What is a <strong>Learner</strong> ?</p>
+<p>This is a <em>critical</em> concept in fastai. the <strong>learner</strong> is something which combines a model <em>(the Neural Network function)</em> and the data we use to train</p>
+<p>Learner = NN fuction + data</p>
+<p>To create a learner we pass :</p>
+<pre><code>learn = vision_learner(dls, resnet18, metrics=error_rate)
+learn.fine_tune(3)</code></pre>
+<ul>
+<li>data <em>(dls)</em></li>
+<li>model <em>resnet18</em> , this is the neural network function
+<ul>
+<li>What is <strong>resnet18</strong>? Someone trained this model to recognize over a million of images of over 1000 different types from <strong>ImageNet</strong> dataset and create those weights</li>
+</ul></li>
+<li>Metrics</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="timm">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+timm
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fastai integrate with <a href="https://timm.fast.ai/">Pytorch Images models <em>(timm)</em></a> a collection of computer vision models, layers, utilities, optimizers, etc…</p>
+</div>
+</div>
+<p>To complete the train, fastai have a method <code>fine_tune</code> that takes those pre-trained weights and adjusts to teach the model the differences between our dataset and ImageNet dataset or any other.</p>
+<p>To use the model/learn, <strong>predict</strong></p>
+<p>Call <code>.predict</code> passing an image and it return the probability(<em>prob</em>).</p>
+<blockquote class="blockquote">
+<p>It is not only computer vision we can work with :</p>
+</blockquote>
+<ul>
+<li>To create a <strong>Segmentation</strong> we can use
+<ul>
+<li>SegmentationDataLoaders</li>
+<li>unet_learner as a learner</li>
+</ul></li>
+<li>Tabular analysis
+<ul>
+<li>Import lib : <code>from fastai.tabular.all import *</code></li>
+<li><code>TabularDataLoader.from_csv</code> to create the dataloader</li>
+<li><code>tabular_learner</code> to create the learner</li>
+<li><code>learn.fit_one_cycle(2)</code> to fit the model</li>
+</ul></li>
+<li>Collaborative filtering <strong><em>(recommendation system)</em></strong>
+<ul>
+<li>Import lib <code>from fastai.collab import *</code></li>
+<li><code>CollabDataLoader.from_csv</code> Create the dataloader</li>
+<li>The learner <code>collab_learner</code> and <code>fine_tune</code> or <code>fit_one_cycle</code></li>
+</ul></li>
+<li>NLP, etc…</li>
+</ul>
+</section>
+</section>
 <section id="prep-work" class="level1">
 <h1>Prep-Work</h1>
 <section id="terminal" class="level2">
@@ -434,232 +526,9 @@ Note
 <section id="best-option-to-access-the-book-and-notebooks" class="level2">
 <h2 class="anchored" data-anchor-id="best-option-to-access-the-book-and-notebooks">11. Best option to access the book and notebooks</h2>
 <p>Open the <a href="https://course.fast.ai/Resources/book.html">course.fast.ai</a> on <strong>Colab</strong> session click on each chapter.</p>
-</section>
-</section>
-<section id="cap-01" class="level1">
-<h1>Cap 01</h1>
-<section id="step-by-step-to-create-the-first-model" class="level2">
-<h2 class="anchored" data-anchor-id="step-by-step-to-create-the-first-model">Step by step to create the first model</h2>
-<section id="is-michael-jackson-alive" class="level3">
-<h3 class="anchored" data-anchor-id="is-michael-jackson-alive">Is Michael Jackson alive ?</h3>
-<p><a href="https://www.kaggle.com/brunodeabreu/michael">Kaggle notebook</a></p>
-<section id="step-1-create-notebook-on-kaggle" class="level4">
-<h4 class="anchored" data-anchor-id="step-1-create-notebook-on-kaggle">STEP 1 : Create notebook on kaggle</h4>
-<p>On kaggle creare a notebook : File/New notebook</p>
-</section>
-</section>
-<section id="step-2-install-packages" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-install-packages">STEP 2: install packages</h3>
-<p>Install <code>fastai</code> and <code>gradio</code></p>
-<pre><code>!pip install -Uqq fastai
-!pip install gradio
-</code></pre>
-</section>
-<section id="step-3-import-libs" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-import-libs">STEP 3: import libs</h3>
-<p>Import fastai core and some libs</p>
-<pre><code>from fastcore.all import *
-import time
-from fastdownload import download_url
-from fastai.vision.all import *
-from fastai.vision.widgets import *
-import pathlib</code></pre>
-</section>
-<section id="step-4-create-search-function" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-create-search-function">STEP 4: create search function</h3>
-<p>Create a function to search images on DDG</p>
-<pre><code>def search_images(term, max_images=200):
-    url = 'https://duckduckgo.com/'
-    res = urlread(url,data={'q':term})
-    searchObj = re.search(r'vqd=([\d-]+)\&amp;', res)
-    requestUrl = url + 'i.js'
-    params = dict(l='us-en', o='json', q=term, vqd=searchObj.group(1), f=',,,', p='1', v7exp='a')
-    urls,data = set(),{'next':1}
-    while len(urls)&lt;max_images and 'next' in data:
-        data = urljson(requestUrl,data=params)
-        urls.update(L(data['results']).itemgot('image'))
-        requestUrl = url + data['next']
-        time.sleep(0.2)
-    return L(urls)[:max_images]</code></pre>
-</section>
-<section id="step-5-test-the-search-function" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-test-the-search-function">STEP 5: Test the search function</h3>
-<p>Try use the function and search for pictures that you are going to work for instance:</p>
-<ul>
-<li><p>birds vs forest : to classify birds</p></li>
-<li><p>Black vs grizzly vs ted bear</p></li>
-<li><p>damage car vs car</p></li>
-<li><p>Types of clouds : ‘cirrus’, ‘stratus’, ‘cumulus’</p></li>
-<li><p><em>is Michael jackson alive?</em></p></li>
-</ul>
-<p><strong><em>Michael look alike person</em></strong></p>
-<pre><code>urls = search_images('look alike michael jackson', max_images=1)
-
-dest = 'FakeMichael.jpg'
-download_url(urls[0], dest, show_progress=False)
-
-im = Image.open(dest)
-im.to_thumb(256,256)</code></pre>
-<p><strong><em>Michael Jackson</em></strong></p>
-<pre><code>download_url(search_images('Michael jackson', max_images=1)[0], 'michael.jpg', show_progress=False)
-Image.open('michael.jpg').to_thumb(256,256)
-</code></pre>
-</section>
-<section id="step-6-download-images" class="level3">
-<h3 class="anchored" data-anchor-id="step-6-download-images">STEP 6 : Download images</h3>
-<p>Lets do a for loop to download more images</p>
-<pre><code>searches = 'Michael jackson','look alike michael jackson'
-path = Path('Michael_or_not')
-
-from time import sleep
-
-for o in searches:
-    dest = (path/o)
-    dest.mkdir(exist_ok=True, parents=True)
-    download_images(dest, urls=search_images(f'{o} photo'))
-    sleep(10)  # Pause between searches to avoid over-loading server
-    download_images(dest, urls=search_images(f'{o} sun photo'))
-    sleep(10)
-    download_images(dest, urls=search_images(f'{o} shade photo'))
-    sleep(10)
-    resize_images(path/o, max_size=400, dest=path/o)
-</code></pre>
-</section>
-<section id="step-8-clean-failed-images" class="level3">
-<h3 class="anchored" data-anchor-id="step-8-clean-failed-images">STEP 8: clean failed images</h3>
-<p>Remove failed images</p>
-<pre><code>failed = verify_images(get_image_files(path))
-failed.map(Path.unlink)
-len(failed)
-</code></pre>
-</section>
-<section id="step-9-create-data-block" class="level3">
-<h3 class="anchored" data-anchor-id="step-9-create-data-block">STEP 9: Create data block</h3>
-<p>Create a data block</p>
-<pre><code>
-dls = DataBlock(
-    blocks=(ImageBlock, CategoryBlock), 
-    get_items=get_image_files, 
-    splitter=RandomSplitter(valid_pct=0.2, seed=42),
-    get_y=parent_label,
-    item_tfms=[Resize(192, method='squish')]
-).dataloaders(path, bs=32)
-
-dls.show_batch(max_n=6)</code></pre>
-</section>
-<section id="step-10-train-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="step-10-train-the-model">STEP 10: Train the model</h3>
-<p>Lets create the learn or model and fine tune</p>
-<pre><code>learn = vision_learner(dls, resnet18, metrics=error_rate)
-learn.fine_tune(3)</code></pre>
-</section>
-<section id="step-11-test-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="step-11-test-the-model">STEP 11: Test the model</h3>
-<pre><code>is_michael,_,probs = learn.predict(PILImage.create('FakeMichael.jpg'))
-print(f"This is a: {is_michael}.")
-print(f"Probability He is Michael: {probs[0]:.4f}")</code></pre>
-<p><strong><em>This is a: look alike michael jackson.</em></strong> <strong><em>Probability He is Michael: 0.0086</em></strong></p>
-</section>
-<section id="step-12-export-and-download-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="step-12-export-and-download-the-model">STEP 12: Export and Download the model</h3>
-<pre><code>learn.path = Path('.')
-learn.export()
-</code></pre>
-<p>To Download from kaggle:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/export_download_model_kaggle.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Download from kaggle</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-13-create-spaces-on-huggingface.co" class="level3">
-<h3 class="anchored" data-anchor-id="step-13-create-spaces-on-huggingface.co">STEP 13 : Create <code>spaces</code> on huggingFace.co</h3>
-<p>Access [huggingface.co)[https://huggingface.co/spaces], click in <code>NEW</code> and select <code>Space</code>, s this is similar github, add the name, select SDK <code>gradio</code>, hardware,license and create, after that you going to receive git clone command and instructions to create your gradio app.py</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/huggingface_new_space.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Create new spaces</figcaption>
-</figure>
-</div>
-</section>
-<section id="step-14-create-the-app" class="level3">
-<h3 class="anchored" data-anchor-id="step-14-create-the-app">STEP 14: Create the app</h3>
-<ol type="1">
-<li><p>Clone hugging face repo <code>git clone &lt;repo&gt;</code></p></li>
-<li><p>cd <code>&lt;repo_name&gt;</code></p></li>
-<li><p>Create an <code>app.py</code> on the app you need to :</p></li>
-</ol>
-<ul>
-<li><p>import libs</p></li>
-<li><p>load model</p></li>
-<li><p>crete a list of categories</p></li>
-<li><p>create a function to classify, this function will call the <code>.predict</code> and perform the prediction</p></li>
-<li><p>Create a button to input new images</p></li>
-<li><p>lanch the gradio interface</p></li>
-</ul>
-<p><strong><em>Sample</em></strong></p>
-<pre><code>__all__ = [ 'learn', 'classify_image', 'categories', 'image', 'label', 'examples', 'intf']
-
-# import libs
-from fastai.vision.all import *
-import gradio as gr
 
 
-# load model
-learn = load_learner('export.pkl')
-
-# list of categories
-categories = ('Michael jackson', 'look alike michael jackson')
-
-## Classify func
-def classify_image(img):
-    pred,idx,probs = learn.predict(img)
-    return dict(zip(categories, map(float,probs)))
-
-# input  new image
-image = gr.inputs.Image(shape=(192, 192))
-label = gr.outputs.Label()
-examples = ['michael.jpg', 'fakemichael.jpg']
-
-## interface
-intf = gr.Interface(fn=classify_image, inputs=image, outputs=label, examples=examples)
-intf.launch(inline=False)
-
-</code></pre>
-<ol start="4" type="1">
-<li><p>Input two sample images of each category</p></li>
-<li><p>Create a <code>requirements.txt</code> to build the container with neecessary libs <code>fastai</code> and <code>gradio</code></p></li>
-<li><p>Commit and add the files to repo, you will see something like :</p></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/huggingface_repo.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Repo</figcaption>
-</figure>
-</div>
 </section>
-<section id="step-15-test-the-app" class="level3">
-<h3 class="anchored" data-anchor-id="step-15-test-the-app">STEP 15: Test the APP</h3>
-<p>If the container has been create successfully you will see the app on <code>APP</code> link</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/app_hugging_face.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Repo</figcaption>
-</figure>
-</div>
-<p>TRY :</p>
-<p><a href="https://huggingface.co/spaces/Brunodeabreu/michael">is Michael alive ?</a></p>
-</section>
-</section>
-</section>
-<section id="cap-2" class="level1">
-<h1>Cap 2</h1>
-</section>
-<section id="cap-3" class="level1">
-<h1>Cap 3</h1>
-
-
 </section>
 
 </main> <!-- /main -->

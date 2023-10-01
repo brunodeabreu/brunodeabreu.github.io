@@ -1,0 +1,277 @@
+---
+title: "Professional Machine Learning Engineer"
+description: |
+  Google path professional Machine Learning Engineer
+author:
+  - name: Bruno
+    url: https://brunodeabreu.github.io
+date: 2023-09-06
+categories: [gcp, machine learning, google]
+image: img/capa.png
+---
+
+
+# Professional Machine Learning Engineer
+
+<!---## Build and Deploy Machine Learning Solutions on Vertex AI  -->
+
+<!---## Perform Foundatoinal Data, ML, and AI Tasks-->
+
+<!---## ML Pipeline-->
+
+<!---## Machine Learning Operations (MLOps) : Getting Started-->
+
+<!---## 9. Recomendation Systems-->
+
+<!---## 8. Natural Language Processing-->
+
+<!---## 7. Computer Vision Fundamentals-->
+
+<!---## 6. Production Machine Learning Systems-->
+
+<!---## 5. Machine Learning in the Enterprise-->
+
+<!---## 4. Feature Engineering-->
+
+<!---## 3. TensorFlow-->
+
+<!---## 2. Launching into Machine Learning-->
+
+## 1. Introduction to AI and Machine Learning
+
+This course provide a toolbox which is full of AI tecnologies and tools offered by Google
+
+* **Foundation** : cloud essentials 
+* **Developement** : different options to build ML and Workflow
+* **Solutions** :Vertical and horizontal solutions and generative AI
+
+### AI Foundations
+
+#### Why AI and Why Google ? 
+
+Google is a leader in developement of AI and it offers a wide range of tools
+
+and  provides : 
+
+1. State-of-the-art ML **models**
+2. End-to-end model development and MLOps - **Productivity**
+3. Unified data to AI **plataform**
+4. Efficient and scalable AI - **Infrastructure**
+
+
+7 principals AI should be: 
+
+1. **socially beneficial**
+2. **Avoid** creating or reinforcing **unfair bias**
+3. Build and tested for safety
+4. **Accountable** to people
+5. Incorporate privancy **design principles**
+6. Uphold high **standards** of scientific excelence
+7. Made available for uses that accord with these principles
+
+
+
+#### Google Cloud Infrastructure
+ 
+* **Computer Engine** : IaaS with compute , storage, network similar to a phisical machine 
+* **Google Kubernetes Engine** : Containerized applications
+* **App Engine** : PaaS, binds code to libraries and developed can be focused on appl logic
+* **Cloud Functions** : Executes code in response to events. Functions as a services
+* **Cloud Run** : Fully managed platform, auto scales up and down, charge only by resources you use
+
+
+##### CPU, GPU and TPU
+
+* CPU : Central processing unit
+* GPU : Graphics processing unit
+* TPU : Tensor Processing Unit
+
+::: {.callout-note title="TPU"}
+TPU are **faster** and more **energy-efficient** for AI and ML applications.
+
+This is the state-of-the-art hardware and supercomputing technology is available with Google Cloud products and services
+:::
+
+
+
+##### STORAGE
+
+> How to choose from these products and services ? 
+
+It depends of data type and bussiness needs
+
+
+
+*Unstructured data*
+
+* Cloud Storage  
+  * Standard storage - *Hot data*
+  * Nearline storage - *Once per month*
+  * Coldline storage - *Once every 90 days*
+  * Archive storage - *Once a year*
+
+
+*Structure data*
+
+* **Transactional**
+  * SQL 
+    * local/reginal : Cloud SQL
+    * global : Cloud spanner
+  * NoSQL : Firestore
+
+
+
+* **Analytical**
+  * SQL : BigQuery
+  * NOSQL : Cloud Bigtable
+
+
+
+
+
+
+#### Data and AI Tools
+
+Products available in each stage of the data-to-AI workflow
+
+* Ingestion and processing : _(Pub/Sub, Dataflow, Dataproc and Cloud Data Fusion)_
+* Storage : _(CloudSQL, Cloud Spanner, Cloud BigTable and Firestore)_
+* Analytics : _(BigQuery and looker)_
+* AI/ML : (_VertexAI_)
+
+
+
+##### ML model categories
+
+* AI includes anything related to computer mimicking human intelligence  _(Robts and self-driving cars)_
+* Machine Learning is a subset of AI that allows computers to learn without being explicity programmed
+
+
+
+
+##### BigQuery ML
+
+
+With **BigQuery ML**, you can manage the **tabular data** and **execute ML models** in one place with just a few steps
+
+
+Key phases of Machine Learning project
+
+1. Extract, transform, and load data into BigQuery
+2. Select and preprocess featres
+  * BigQuery ML does some preprocessing for us, like **one-hot encoding**
+3. Create the model
+
+```
+#standarSQL
+
+CREATE MODEL
+ecommerce.classification
+
+OPTIONS
+(
+  model_type='logistic_reg'
+  input_label_cols='will_buy_later'
+
+) AS 
+
+# SQL with training data
+
+```
+
+There are others algorithms : 
+
+![BigQuery Model Selection](img/model_selection_gcp_bg.png)
+
+4. Evaluate the performance of the trained model
+
+
+
+```
+SELECT 
+  roc_auc,
+  accuracy,
+  precision,
+  recall
+FROM 
+  ML.EVALUATE(MODEL`ecommerce.classification`)
+```
+
+
+
+
+5. Use the model to make predictions
+
+
+```
+SELECT * FROM
+  ML.PREDICT
+  (
+    MODEL.`ecommerce.classification` )
+```
+
+
+
+### AI Development Options
+
+Google offers to build a machine learning models 
+
+1. **Pre-trained APIs** :  _Use ML models that google already built and trained_
+2. **BigQuery ML** : _Use SQL queries to create and execute ML models in BigQuery_
+3. **AutoML** : _Apply no-code solution to build ml models on Vertex AI_
+4. **Custom training** : _Code your own ML env to have the control over the ML pipeline_
+
+#### Pre-Trained APIs
+
+API _(**A**pplication **P**rogramming **I**nterface)_ define how software components communicate with each other.
+
+* Cloud Natural Language API : recognizes parts of speech called entities and sentiment.
+* Cloud Speech-to-Text : convert audio to text
+* Cloud Translation API : convert text from one language to another
+* Cloud Vision : recognizes content in static images
+* Cloud Video Intelligence : recognizes motion and actions in a video
+* Diagflow API : builds conversational interfaces
+* Generative AI related APIs : 
+  * PaLM for text : perform language tasks and tune the LLM model with your own data.
+  * PaLM for chat : create applications that engage users in dynamic and context-aware conversations.
+  * Image for image : create and edit images
+  * Embeddings API for text and Image : extract semantic information from unstructured data.
+  * Chirp for speech : build voice 
+  * Cody for code generation : produce and debug code
+
+* Natural Language API
+  * [Try - demo](https://cloud.google.com/natural-language#section-2)
+
+
+#### Vertex AI
+
+Vertex AI provides an end-to-end ML, pipeline to prepare data, and create, deploy, and manage models over time, and at scale.
+
+We can think of Vertex AI Workbench as a Jupyter notebook deployed in a single development environment
+
+
+#### Auto ML
+
+Automate the process to develop and deploy an ML model.
+
+AutoML automates the pipeline from feature ngineering, to architecture search, to hyperparameter tuning, and to model ensembly
+
+
+#### Custom Training
+
+*Do-it-yourself* solution to build an ML project.
+
+Which environment you want your ML training code to use.
+
+  * pre-built container
+  * custom container
+
+
+Can use ML Library (_TensorFlow, scikit-learn, and PyTorch._) collection of pre-written code that can be used to perform machine learning tasks.
+
+TensorFlow
+
+
+#### Lab Natural Language API
+
+### AI Development Workflow

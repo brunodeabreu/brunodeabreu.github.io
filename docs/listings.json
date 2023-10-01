@@ -2,14 +2,16 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/2022-09-30-first-post/index.html"
+      "/posts/2023-09-01-bigquery/index.html",
+      "/posts/2022-09-30-first-cnn-model/index.html"
     ]
   },
   {
     "listing": "/notas.html",
     "items": [
-      "/notas/2023-09-06-intro-deep-learning/index.html",
-      "/notas/2023-09-01-pre-work-deep-learning/index.html"
+      "/notas/2023-09-06-GCP-ML-Engineer/index.html",
+      "/notas/2023-09-06-DataCamp/index.html",
+      "/notas/2023-09-01-deep-learning/index.html"
     ]
   }
 ]

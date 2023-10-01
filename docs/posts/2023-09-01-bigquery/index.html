@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bruno Machado">
+<meta name="dcterms.date" content="2023-09-29">
+<meta name="description" content="This Lab from Google PMLE course where I practice BigQuery ML">
+
+<title>Bruno de Abreu Machado - Predicting Visitor Purchases with BigQuery ML</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../img/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/favicon.png" alt="Bruno de Abreu Machado" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">about</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notas.html" rel="" target="">
+ <span class="menu-text">courses</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../CV/resume.pdf" rel="" target="">
+ <span class="menu-text">cv</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://brunodeabreu.com/book-notes-linux-learn/" rel="" target="">
+ <span class="menu-text">notas</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brunodeabreu" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmachado" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/brunodeabreu/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#predicting-visitor-purchases-with-bigquery-ml" id="toc-predicting-visitor-purchases-with-bigquery-ml" class="nav-link active" data-scroll-target="#predicting-visitor-purchases-with-bigquery-ml">Predicting Visitor Purchases with BigQuery ML</a>
+  <ul class="collapse">
+  <li><a href="#exploring-the-data-and-answer-the-questions" id="toc-exploring-the-data-and-answer-the-questions" class="nav-link" data-scroll-target="#exploring-the-data-and-answer-the-questions">Exploring the data and answer the questions:</a></li>
+  <li><a href="#select-features-and-create-your-training-dataset" id="toc-select-features-and-create-your-training-dataset" class="nav-link" data-scroll-target="#select-features-and-create-your-training-dataset">Select features and create your training dataset</a></li>
+  <li><a href="#select-a-bigquery-ml-model-type-and-specify-options" id="toc-select-a-bigquery-ml-model-type-and-specify-options" class="nav-link" data-scroll-target="#select-a-bigquery-ml-model-type-and-specify-options">Select a BigQuery ML model type and specify options</a></li>
+  <li><a href="#evaluate-classification-model-performance" id="toc-evaluate-classification-model-performance" class="nav-link" data-scroll-target="#evaluate-classification-model-performance">Evaluate classification model performance</a></li>
+  <li><a href="#improve-model-performance-with-feature-engineering" id="toc-improve-model-performance-with-feature-engineering" class="nav-link" data-scroll-target="#improve-model-performance-with-feature-engineering">Improve model performance with feature engineering</a></li>
+  <li><a href="#predict-which-new-visitors-will-come-back-and-purchase" id="toc-predict-which-new-visitors-will-come-back-and-purchase" class="nav-link" data-scroll-target="#predict-which-new-visitors-will-come-back-and-purchase">Predict which new visitors will come back and purchase</a></li>
+  <li><a href="#more-options-to-create-model" id="toc-more-options-to-create-model" class="nav-link" data-scroll-target="#more-options-to-create-model">More options to create model</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/brunodeabreu/SitePessoal/edit/main/posts/2023-09-01-bigquery/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/brunodeabreu/SitePessoal/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Predicting Visitor Purchases with BigQuery ML</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">GCP</div>
+    <div class="quarto-category">PMLE</div>
+    <div class="quarto-category">BigQuery</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>This Lab from Google PMLE course where I practice BigQuery ML</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Bruno Machado </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 29, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="predicting-visitor-purchases-with-bigquery-ml" class="level1">
+<h1>Predicting Visitor Purchases with BigQuery ML</h1>
+<p><strong>Scenario:</strong></p>
+<p>Your data analyst team exported the Google Analytics logs for an ecommerce website into BigQuery and created a new table of all the raw commerce visitor session data for you to explore. Using this data, you’ll try to answer a few questions.</p>
+<p><strong>Question:</strong></p>
+<ol type="1">
+<li>Out of the total visitors who visited our website, what % made a purchase?</li>
+<li>What are the top 5 selling products?</li>
+<li>How many visitors bought on subsequent visits to the website?</li>
+<li>Looking at the initial data results, do you think time_on_site and bounces will be a good indicator of whether the user will return and purchase or not?</li>
+</ol>
+<section id="exploring-the-data-and-answer-the-questions" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-data-and-answer-the-questions">Exploring the data and answer the questions:</h2>
+<p><strong>Question 1</strong> : <em>Out of the total visitors who visited our website, what % made a purchase?</em></p>
+<p>To answer that question we gonig to dive <code>total_purchasers / total_visitors</code> :</p>
+<p>R: 2.69%</p>
+<pre><code>#standardSQL
+
+WITH visitors AS(
+SELECT
+COUNT(DISTINCT fullVisitorId) AS total_visitors
+FROM `data-to-insights.ecommerce.web_analytics`
+),
+purchasers AS(
+SELECT
+COUNT(DISTINCT fullVisitorId) AS total_purchasers
+FROM `data-to-insights.ecommerce.web_analytics`
+WHERE totals.transactions IS NOT NULL
+)
+SELECT
+  total_visitors,
+  total_purchasers,
+  total_purchasers / total_visitors AS conversion_rate
+FROM visitors, purchasers</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bigQuery_1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Question 1</figcaption>
+</figure>
+</div>
+<p><strong>Question 2</strong> : <em>What are the top 5 selling products?</em></p>
+<p>To answer this question lets query and sum the productQuantity and return also the revenue</p>
+<pre><code>
+SELECT
+  p.v2ProductName,
+  p.v2ProductCategory,
+  SUM(p.productQuantity) AS units_sold,
+  ROUND(SUM(p.localProductRevenue/1000000),2) AS revenue
+FROM `data-to-insights.ecommerce.web_analytics`,
+UNNEST(hits) AS h,
+UNNEST(h.product) AS p
+GROUP BY 1, 2
+ORDER BY revenue DESC
+LIMIT 5;
+</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bigquery2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Question 2</figcaption>
+</figure>
+</div>
+<p><strong>Question 3</strong> : <em>How many visitors bought on subsequent visits to the website?</em></p>
+<p>This query will return two rows, one with total visitors that returned and buy and another one for not buy, the main logic in on that condition : <code>IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit</code></p>
+<pre><code># visitors who bought on a return visit could have bought on first as well
+
+WITH all_visitor_stats AS (
+SELECT
+  fullvisitorid, # 741,721 unique visitors
+  IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit
+  FROM `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid
+)
+SELECT
+  COUNT(DISTINCT fullvisitorid) AS total_visitors,
+  will_buy_on_return_visit
+FROM all_visitor_stats
+GROUP BY will_buy_on_return_visit
+</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bigQuery3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Quesiton 3</figcaption>
+</figure>
+</div>
+</section>
+<section id="select-features-and-create-your-training-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="select-features-and-create-your-training-dataset">Select features and create your training dataset</h2>
+<p>After explore the data lets create a dataset to create a Machine Learning model in BigQuery to predict whether or not a new user is likely to purchase in the future</p>
+<p><strong>Question:</strong>: <em>Looking at the initial data results, do you think time_on_site and bounces will be a good indicator of whether the user will return and purchase or not?</em></p>
+<p>In the lab it was provided that there are two important fields for that prediction</p>
+<ul>
+<li><code>totals.bounces</code> (whether the visitor left the website immediately)</li>
+<li><code>totals.timeOnSite</code> (how long the visitor was on our website)</li>
+</ul>
+<pre><code>SELECT
+  * EXCEPT(fullVisitorId)
+FROM
+  # features
+  (SELECT
+    fullVisitorId,
+    IFNULL(totals.bounces, 0) AS bounces,
+    IFNULL(totals.timeOnSite, 0) AS time_on_site
+  FROM
+    `data-to-insights.ecommerce.web_analytics`
+  WHERE
+    totals.newVisits = 1)
+  JOIN
+  (SELECT
+    fullvisitorid,
+    IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit
+  FROM
+      `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid)
+  USING (fullVisitorId)
+ORDER BY time_on_site DESC
+LIMIT 10;
+</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bigquery_4.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Question 4</figcaption>
+</figure>
+</div>
+</section>
+<section id="select-a-bigquery-ml-model-type-and-specify-options" class="level2">
+<h2 class="anchored" data-anchor-id="select-a-bigquery-ml-model-type-and-specify-options">Select a BigQuery ML model type and specify options</h2>
+<ul>
+<li>before run we need to create a dataset ecommerce to save the model</li>
+</ul>
+<p>Create the model</p>
+<pre><code>CREATE OR REPLACE MODEL `ecommerce.classification_model`
+OPTIONS
+(
+model_type='logistic_reg',
+labels = ['will_buy_on_return_visit']
+)
+AS
+#standardSQL
+SELECT
+  * EXCEPT(fullVisitorId)
+FROM
+  # features
+  (SELECT
+    fullVisitorId,
+    IFNULL(totals.bounces, 0) AS bounces,
+    IFNULL(totals.timeOnSite, 0) AS time_on_site
+  FROM
+    `data-to-insights.ecommerce.web_analytics`
+  WHERE
+    totals.newVisits = 1
+    AND date BETWEEN '20160801' AND '20170430') # train on first 9 months
+  JOIN
+  (SELECT
+    fullvisitorid,
+    IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit
+  FROM
+      `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid)
+  USING (fullVisitorId)
+;
+</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/biquery_creating model.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Create the model</figcaption>
+</figure>
+</div>
+</section>
+<section id="evaluate-classification-model-performance" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate-classification-model-performance">Evaluate classification model performance</h2>
+<p>In his classificatin problem we need :</p>
+<ol type="1">
+<li>minimize the <strong>False Positive Rate</strong> <em>(predict that the user will return and purchase and they don’t)</em></li>
+<li>maximize the <strong>True Positive Rate</strong> <em>(predict that the user will return and purchase and they do)</em></li>
+</ol>
+<p>In BigQuery ML, <strong>roc_auc</strong> is simply a queryable field when evaluating your trained ML model.</p>
+<pre><code>SELECT
+  roc_auc,
+  CASE
+    WHEN roc_auc &gt; .9 THEN 'good'
+    WHEN roc_auc &gt; .8 THEN 'fair'
+    WHEN roc_auc &gt; .7 THEN 'not great'
+  ELSE 'poor' END AS model_quality
+FROM
+  ML.EVALUATE(MODEL ecommerce.classification_model,  (
+SELECT
+  * EXCEPT(fullVisitorId)
+FROM
+  # features
+  (SELECT
+    fullVisitorId,
+    IFNULL(totals.bounces, 0) AS bounces,
+    IFNULL(totals.timeOnSite, 0) AS time_on_site
+  FROM
+    `data-to-insights.ecommerce.web_analytics`
+  WHERE
+    totals.newVisits = 1
+    AND date BETWEEN '20170501' AND '20170630') # eval on 2 months
+  JOIN
+  (SELECT
+    fullvisitorid,
+    IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit
+  FROM
+      `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid)
+  USING (fullVisitorId)
+));</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/evaluate_bigquery.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Evaluate</figcaption>
+</figure>
+</div>
+</section>
+<section id="improve-model-performance-with-feature-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="improve-model-performance-with-feature-engineering">Improve model performance with feature engineering</h2>
+<p>Add some new features and create a second machine learning model called classification_model_2:</p>
+<ul>
+<li>How far the visitor got in the checkout process on their first visit</li>
+<li>Where the visitor came from (traffic source: organic search, referring site etc.)</li>
+<li>Device category (mobile, tablet, desktop)</li>
+<li>Geographic information (country)</li>
+</ul>
+<p>Create the NEW model:</p>
+<pre><code>CREATE OR REPLACE MODEL `ecommerce.classification_model_2`
+OPTIONS
+  (model_type='logistic_reg', labels = ['will_buy_on_return_visit']) AS
+WITH all_visitor_stats AS (
+SELECT
+  fullvisitorid,
+  IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit
+  FROM `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid
+)
+# add in new features
+SELECT * EXCEPT(unique_session_id) FROM (
+  SELECT
+      CONCAT(fullvisitorid, CAST(visitId AS STRING)) AS unique_session_id,
+      # labels
+      will_buy_on_return_visit,
+      MAX(CAST(h.eCommerceAction.action_type AS INT64)) AS latest_ecommerce_progress,
+      # behavior on the site
+      IFNULL(totals.bounces, 0) AS bounces,
+      IFNULL(totals.timeOnSite, 0) AS time_on_site,
+      totals.pageviews,
+      # where the visitor came from
+      trafficSource.source,
+      trafficSource.medium,
+      channelGrouping,
+      # mobile or desktop
+      device.deviceCategory,
+      # geographic
+      IFNULL(geoNetwork.country, "") AS country
+  FROM `data-to-insights.ecommerce.web_analytics`,
+     UNNEST(hits) AS h
+    JOIN all_visitor_stats USING(fullvisitorid)
+  WHERE 1=1
+    # only predict for new visits
+    AND totals.newVisits = 1
+    AND date BETWEEN '20160801' AND '20170430' # train 9 months
+  GROUP BY
+  unique_session_id,
+  will_buy_on_return_visit,
+  bounces,
+  time_on_site,
+  totals.pageviews,
+  trafficSource.source,
+  trafficSource.medium,
+  channelGrouping,
+  device.deviceCategory,
+  country
+);
+</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/model2_bigQuery.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New Model</figcaption>
+</figure>
+</div>
+<p><em>Evaluate</em></p>
+<pre><code>
+
+#standardSQL
+SELECT
+  roc_auc,
+  CASE
+    WHEN roc_auc &gt; .9 THEN 'good'
+    WHEN roc_auc &gt; .8 THEN 'fair'
+    WHEN roc_auc &gt; .7 THEN 'not great'
+  ELSE 'poor' END AS model_quality
+FROM
+  ML.EVALUATE(MODEL ecommerce.classification_model_2,  (
+WITH all_visitor_stats AS (
+SELECT
+  fullvisitorid,
+  IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit
+  FROM `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid
+)
+# add in new features
+SELECT * EXCEPT(unique_session_id) FROM (
+  SELECT
+      CONCAT(fullvisitorid, CAST(visitId AS STRING)) AS unique_session_id,
+      # labels
+      will_buy_on_return_visit,
+      MAX(CAST(h.eCommerceAction.action_type AS INT64)) AS latest_ecommerce_progress,
+      # behavior on the site
+      IFNULL(totals.bounces, 0) AS bounces,
+      IFNULL(totals.timeOnSite, 0) AS time_on_site,
+      totals.pageviews,
+      # where the visitor came from
+      trafficSource.source,
+      trafficSource.medium,
+      channelGrouping,
+      # mobile or desktop
+      device.deviceCategory,
+      # geographic
+      IFNULL(geoNetwork.country, "") AS country
+  FROM `data-to-insights.ecommerce.web_analytics`,
+     UNNEST(hits) AS h
+    JOIN all_visitor_stats USING(fullvisitorid)
+  WHERE 1=1
+    # only predict for new visits
+    AND totals.newVisits = 1
+    AND date BETWEEN '20170501' AND '20170630' # eval 2 months
+  GROUP BY
+  unique_session_id,
+  will_buy_on_return_visit,
+  bounces,
+  time_on_site,
+  totals.pageviews,
+  trafficSource.source,
+  trafficSource.medium,
+  channelGrouping,
+  device.deviceCategory,
+  country
+)
+));
+</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/evaluate_new_model.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Evaluate new model</figcaption>
+</figure>
+</div>
+</section>
+<section id="predict-which-new-visitors-will-come-back-and-purchase" class="level2">
+<h2 class="anchored" data-anchor-id="predict-which-new-visitors-will-come-back-and-purchase">Predict which new visitors will come back and purchase</h2>
+<p>Lets predict the probability that a first-time visitor will make a purchase in a later visit</p>
+<pre><code>SELECT
+*
+FROM
+  ml.PREDICT(MODEL `ecommerce.classification_model_2`,
+   (
+WITH all_visitor_stats AS (
+SELECT
+  fullvisitorid,
+  IF(COUNTIF(totals.transactions &gt; 0 AND totals.newVisits IS NULL) &gt; 0, 1, 0) AS will_buy_on_return_visit
+  FROM `data-to-insights.ecommerce.web_analytics`
+  GROUP BY fullvisitorid
+)
+  SELECT
+      CONCAT(fullvisitorid, '-',CAST(visitId AS STRING)) AS unique_session_id,
+      # labels
+      will_buy_on_return_visit,
+      MAX(CAST(h.eCommerceAction.action_type AS INT64)) AS latest_ecommerce_progress,
+      # behavior on the site
+      IFNULL(totals.bounces, 0) AS bounces,
+      IFNULL(totals.timeOnSite, 0) AS time_on_site,
+      totals.pageviews,
+      # where the visitor came from
+      trafficSource.source,
+      trafficSource.medium,
+      channelGrouping,
+      # mobile or desktop
+      device.deviceCategory,
+      # geographic
+      IFNULL(geoNetwork.country, "") AS country
+  FROM `data-to-insights.ecommerce.web_analytics`,
+     UNNEST(hits) AS h
+    JOIN all_visitor_stats USING(fullvisitorid)
+  WHERE
+    # only predict for new visits
+    totals.newVisits = 1
+    AND date BETWEEN '20170701' AND '20170801' # test 1 month
+  GROUP BY
+  unique_session_id,
+  will_buy_on_return_visit,
+  bounces,
+  time_on_site,
+  totals.pageviews,
+  trafficSource.source,
+  trafficSource.medium,
+  channelGrouping,
+  device.deviceCategory,
+  country
+)
+)
+ORDER BY
+  predicted_will_buy_on_return_visit DESC;
+</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/predict_big_query.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Predict</figcaption>
+</figure>
+</div>
+</section>
+<section id="more-options-to-create-model" class="level2">
+<h2 class="anchored" data-anchor-id="more-options-to-create-model">More options to create model</h2>
+<p>Using Deep learning and neural network :</p>
+<ul>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-dnn-models">Deep Neural Network</a></li>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-tensorflow">TensorFlow</a></li>
+</ul>
+<p>Using AutoMl and XGBoost:</p>
+<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-automl">AutoML</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/automl_bigquery.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">auto_ml model</figcaption>
+</figure>
+</div>
+<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-boosted-tree">XGBoost</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/xgboost_bg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">XGBoost model</figcaption>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2023, Bruno de Abreu Machado
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brunodeabreu">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/__bmachado__">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

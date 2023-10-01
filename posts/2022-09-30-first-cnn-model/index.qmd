@@ -1,28 +1,30 @@
 ---
-title: "#2 Deep learning for Coders fast.ai - Cap 01"
+title: "Step by step to create a first computer vision model"
 description: |
-  Hands-on coding course from fast.ai
+  This tutorial describe how to create a computer vision model to classify if the picture is from real Michael Jackson or a look alike person
 author:
-  - name: Bruno
-    url: https://brunodeabreu.github.io
-date: 2023-09-06
-categories: [DL, python, fastai]
-image: img/deep_learning.jpeg
+  - name: Bruno Machado
+
+date: 09-18-2023
+categories: [fastai, pytorch, CNN]
+image: img/app_hugging_face.png
 ---
 
+## Step by step to create the first model
 
-# Step by step to create the first model
 
-## Is Michael Jackson alive ? 
+### Is Michael Jackson alive ? 
 
 [Kaggle notebook](https://www.kaggle.com/brunodeabreu/michael)
+[Application](https://huggingface.co/spaces/Brunodeabreu/michael)
 
-### STEP 1 :  Create notebook on kaggle
+
+#### STEP 1 :  Create notebook on kaggle
 
 On kaggle creare a notebook : File/New notebook
 
 
-## STEP 2: install packages
+### STEP 2: install packages
 
 Install `fastai` and `gradio`
 
@@ -32,7 +34,7 @@ Install `fastai` and `gradio`
 
 ```
 
-## STEP 3: import libs
+### STEP 3: import libs
 
 Import fastai core and some libs
 
@@ -45,7 +47,7 @@ from fastai.vision.widgets import *
 import pathlib
 ```
 
-## STEP 4: create search function
+### STEP 4: create search function
 
 Create a function to search images on DDG
 
@@ -66,7 +68,7 @@ def search_images(term, max_images=200):
 ```
 
 
-## STEP 5:  Test the search function 
+### STEP 5:  Test the search function 
 
 Try use the function and search for  pictures that you are going to work for instance:
 
@@ -98,7 +100,7 @@ Image.open('michael.jpg').to_thumb(256,256)
 
 ```
 
-## STEP 6 : Download images
+### STEP 6 : Download images
 
 Lets do a for loop to download more images
 
@@ -123,7 +125,7 @@ for o in searches:
 ```
 
 
-## STEP 8: clean failed images
+### STEP 8: clean failed images
 
 Remove failed images
 
@@ -134,7 +136,7 @@ len(failed)
 
 ```
 
-## STEP 9: Create data block
+### STEP 9: Create data block
 
 Create a data block
 
@@ -152,7 +154,7 @@ dls.show_batch(max_n=6)
 ```
 
 
-## STEP 10: Train the model
+### STEP 10: Train the model
 
 Lets create the learn or model and fine tune
 
@@ -161,7 +163,7 @@ learn = vision_learner(dls, resnet18, metrics=error_rate)
 learn.fine_tune(3)
 ```
 
-## STEP 11: Test the model
+### STEP 11: Test the model
 
 ```
 is_michael,_,probs = learn.predict(PILImage.create('FakeMichael.jpg'))
@@ -173,7 +175,7 @@ print(f"Probability He is Michael: {probs[0]:.4f}")
 ***Probability He is Michael: 0.0086***
 
 
-## STEP 12: Export and Download the model
+### STEP 12: Export and Download the model
 
 ```
 learn.path = Path('.')
@@ -188,7 +190,7 @@ To Download from kaggle:
 
 
 
-## STEP 13 : Create `spaces` on huggingFace.co
+### STEP 13 : Create `spaces` on huggingFace.co
 
 Access [huggingface.co)[https://huggingface.co/spaces], click in `NEW` and select `Space`, s this is similar github, add the name, select SDK `gradio`, hardware,license and create, after that you going to receive git clone command and instructions to create your gradio app.py
 
@@ -196,7 +198,7 @@ Access [huggingface.co)[https://huggingface.co/spaces], click in `NEW` and selec
 ![Create new spaces](img/huggingface_new_space.png)
 
 
-## STEP 14: Create the app
+### STEP 14: Create the app
 
 1. Clone hugging face repo `git clone <repo>`
 
@@ -259,7 +261,7 @@ intf.launch(inline=False)
 ![Repo](img/huggingface_repo.png)
 
 
-## STEP 15: Test the APP
+### STEP 15: Test the APP
 
 If the container has been create successfully you will see the app on `APP` link
 
@@ -268,3 +270,4 @@ If the container has been create successfully you will see the app on `APP` link
 TRY : 
 
 [is Michael alive ? ](https://huggingface.co/spaces/Brunodeabreu/michael)
+

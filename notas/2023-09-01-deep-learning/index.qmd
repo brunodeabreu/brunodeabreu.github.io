@@ -1,20 +1,136 @@
 ---
-title: "#1 Deep learning for Coders fast.ai - Prep-Work"
+title: "Deep learning for Coders fast.ai"
 description: |
-  Pre-Work : a hands-on coding course from fast.ai
+  A hands-on coding course from fast.ai
 author:
   - name: Bruno
     url: https://brunodeabreu.github.io
-#    orcid: 0000-0002-5300-3075
-#    affiliation: Master of Environmental Data Science Program @ The Bren School (UCSB) & The National Center for Ecological Analysis and Synthesis
-#    affiliation-url: https://ucsb-meds.github.io/
 date: 2023-09-01
 categories: [DL, python, fastai]
-image: img/deep_learning.jpeg
+image: img/capa.jpeg
 ---
 
 
-# 1. Terminal
+<!---# Cap 2 --> 
+
+# Cap 01
+
+## Notes from video 1
+
+**Motivation** : 
+
+> *How to build a compyter vision classifier ?*
+
+* A pixel is recognized by RGB number, that going to be an input to computer vision model
+* To train a colection of image we need a **DataBlock**, this provides to *fastai* all the information it needs to create a Computer Vision model
+* When we create the model using `visual_learner` it going to learn from each image that you input
+* To predict and check we call `.predict` it will return a probability
+
+
+*How the model learn ?* 
+
+* Each layer will learn small things, like diagonal, circle ....
+
+
+
+*Fastai Lib*
+
+* Builded on top of pyTorch
+* We can use [colab](https://colab.research.google.com/), [gradient](https://www.paperspace.com/artificial-intelligence), [sagemaker](https://aws.amazon.com/pt/blogs/machine-learning/building-training-and-deploying-fastai-models-with-amazon-sagemaker/), [kaggle](https://www.kaggle.com/code) to develop
+* Samples simple computer vision classifier: 
+  * [Is it  a bird ?](https://www.kaggle.com/code/jhoward/is-it-a-bird-creating-a-model-from-your-own-data)
+  * [Is Michael Jackson Alive ? ](https://www.kaggle.com/brunodeabreu/michael)
+
+
+
+*DataBlock*
+
+> How do I get *"this data"* into my model ? 
+
+We create a `DataBlock` and according the structure and options fastai will know the type of model to create, we need to inform:
+
+* What kind of input do we have ? _ImageBlock_
+* What kind of output ? _CategoryBlock_
+* Provide a list of ALL image files and path *get_image_files*
+* Reserve some data to validate _RandomSplitter_
+* How do we know the correct label of photo *parent_label*
+* Transform the image *Resize*
+
+This will create a *DataBlock* using a pyTorch function `dataloaders`, this  is what pyTorch interate to get bunch of data
+
+```
+dls = DataBlock(
+    blocks=(ImageBlock, CategoryBlock), 
+    get_items=get_image_files, 
+    splitter=RandomSplitter(valid_pct=0.2, seed=42),
+    get_y=parent_label,
+    item_tfms=[Resize(192, method='squish')]
+).dataloaders(path, bs=32)
+
+dls.show_batch(max_n=6)
+```
+
+To read more [https://docs.fast.ai/tutorial.datablock.html](https://docs.fast.ai/tutorial.datablock.html)
+
+
+On the end we will have a **dls** *(dataloaders)* object that contains iterators where pyTorch can run through to grab batches of random data *(training and validation )* images
+
+What is a **Learner** ?  
+
+This is a *critical* concept in fastai. the **learner** is something which combines a model *(the Neural Network function)* and the data we use  to train
+
+Learner = NN fuction + data
+
+To create a learner we pass : 
+
+```
+learn = vision_learner(dls, resnet18, metrics=error_rate)
+learn.fine_tune(3)
+```
+
+
+* data *(dls)*
+* model *resnet18* , this is the neural network function
+  * What is **resnet18**? Someone trained this model to recognize over a million  of images of over 1000 different types from **ImageNet** dataset and create those weights
+* Metrics
+
+::: {.callout-tip title="timm"}
+Fastai integrate with [Pytorch Images models *(timm)*](https://timm.fast.ai/)  a collection of computer vision models, layers,  utilities,  optimizers, etc...
+:::
+
+
+To complete the train, fastai have a method `fine_tune` that takes those pre-trained weights and adjusts to teach the model the differences between our dataset and ImageNet dataset or any other.
+
+
+To use the model/learn, **predict**
+
+Call `.predict` passing an image and it return the probability(*prob*).
+
+
+> It is not only computer vision we can work with : 
+
+* To create a **Segmentation** we can use 
+  * SegmentationDataLoaders
+  * unet_learner as a learner
+
+* Tabular analysis
+  * Import lib : `from fastai.tabular.all import *`
+  * `TabularDataLoader.from_csv` to  create  the dataloader
+  * `tabular_learner` to create the learner
+  * `learn.fit_one_cycle(2)` to fit the model
+
+* Collaborative filtering **_(recommendation system)_**
+  * Import lib  `from fastai.collab import *`
+  * `CollabDataLoader.from_csv`  Create the dataloader
+  * The learner `collab_learner` and `fine_tune` or  `fit_one_cycle`
+
+* NLP,  etc...
+
+
+
+# Prep-Work
+
+## 1. Terminal
 
 
 On Windows we can install PowerShell and WSL using, the first time you
@@ -31,7 +147,7 @@ wsl --install
 
 
 
-## 1.1 tmux
+### 1.1 tmux
 
 To install tmux `sudo apt install tmux`
 
@@ -46,7 +162,7 @@ To install tmux `sudo apt install tmux`
 <br>
 
 
-# 2. Install python
+## 2. Install python
 
   * Github for conda mini-forge and mamba-forge installer [conda-forge/miniforge](https://github.com/conda-forge/miniforge)
   * Linux Manbaforge install
@@ -67,10 +183,10 @@ To install tmux `sudo apt install tmux`
 <br>
 
 
-# 3. Setup `fastai`
+## 3. Setup `fastai`
 
 
-## 3.1 Setup conda install
+### 3.1 Setup conda install
 
 To setup fastai in our notebook [Github-Fastsetup](https://github.com/fastai/fastsetup)
 
@@ -85,7 +201,7 @@ bash setup-conda.sh
 <br>
 
 
-# 4. Install other packages using mamba
+## 4. Install other packages using mamba
 
 
 **Conda** and **Mamba** is two ways of doing the same thing, however  today mamba is very fast
@@ -112,12 +228,12 @@ bash setup-conda.sh
 
 
 
-# 5. Git
+## 5. Git
 
 Git repository is a folder that contain files and sub-folders that we can store and git keeps a copy of every  version of files
 
 
-## 5.1 Create new repo
+### 5.1 Create new repo
 
 The below figure describe how to create a new repo we can : 
 
@@ -133,7 +249,7 @@ DO NOT share password or keys on github
 :::
 
 
-## 5.2 Configure SSH Key o Github and clone .git repository
+### 5.2 Configure SSH Key o Github and clone .git repository
 
 STEPS :
 
@@ -144,7 +260,7 @@ STEPS :
 3. Now you will be able to clone the .git repository and save your changes
 
 
-## 5.3 Basic Cmds : Commit, push, pull, status
+### 5.3 Basic Cmds : Commit, push, pull, status
 
 The complete list of [git commands](https://git-scm.com/docs/git#_git_commands)
 
@@ -156,7 +272,7 @@ The complete list of [git commands](https://git-scm.com/docs/git#_git_commands)
 * **status** : `git status`
 
 
-# 6. Jupyter lab
+## 6. Jupyter lab
 
 To start the jupyter notebook we can issue : `jupyter lab --no-browser`
 
@@ -168,7 +284,7 @@ Tip :
 
 
 
-# 7. Clone the Fastai book and install fastai
+## 7. Clone the Fastai book and install fastai
 
 STEPS: 
 
@@ -191,7 +307,7 @@ When we install fastbook it also install fastai
 
 
 
-# 8. Create an enviroment 
+## 8. Create an enviroment 
 
 STEPS : 
 
@@ -206,7 +322,7 @@ To return to (base) we  can only issue `conda activate`
 :::
 
 
-# 9. Creating paperspace notebook
+## 9. Creating paperspace notebook
 
   Using [https://www.paperspace.com/artificial-intelligence](https://www.paperspace.com/artificial-intelligence) we can get a **FREE** GPU server.
 
@@ -214,7 +330,7 @@ To return to (base) we  can only issue `conda activate`
 We can signup with github  or gmail account and select `gradient` it will request you to create a project and after that you can create notebooks/servers.
 
 
-# 10. Google Colab 
+## 10. Google Colab 
 
 STEPS : 
 
@@ -232,7 +348,9 @@ STEPS :
 5. Change the enviroment to TPU : Go to Ambiente de execução -> Alterar tipo de ambiente de exeção -> Select T4 GPU
 
 
-# 11. Best option to access the book and notebooks
+## 11. Best option to access the book and notebooks
 
 Open the [course.fast.ai](https://course.fast.ai/Resources/book.html) on  **Colab** session click on each chapter.
+
+
 

@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Bruno">
-<meta name="dcterms.date" content="2023-09-01">
-<meta name="description" content="Pre-Work : a hands-on coding course from fast.ai">
+<meta name="author" content="Bruno Machado">
+<meta name="dcterms.date" content="2023-09-18">
+<meta name="description" content="This tutorial describe how to create a computer vision model to classify if the picture is from real Michael Jackson or a look alike person">
 
-<title>Bruno de Abreu Machado - Deep learning for Coders fast.ai</title>
+<title>Bruno de Abreu Machado - Step by step to create a first computer vision model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,34 +144,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prep-work" id="toc-prep-work" class="nav-link active" data-scroll-target="#prep-work">Prep-Work</a>
-  <ul class="collapse">
-  <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal">1. Terminal</a>
-  <ul class="collapse">
-  <li><a href="#tmux" id="toc-tmux" class="nav-link" data-scroll-target="#tmux">1.1 tmux</a></li>
-  </ul></li>
-  <li><a href="#install-python" id="toc-install-python" class="nav-link" data-scroll-target="#install-python">2. Install python</a></li>
-  <li><a href="#setup-fastai" id="toc-setup-fastai" class="nav-link" data-scroll-target="#setup-fastai">3. Setup <code>fastai</code></a>
-  <ul class="collapse">
-  <li><a href="#setup-conda-install" id="toc-setup-conda-install" class="nav-link" data-scroll-target="#setup-conda-install">3.1 Setup conda install</a></li>
-  </ul></li>
-  <li><a href="#install-other-packages-using-mamba" id="toc-install-other-packages-using-mamba" class="nav-link" data-scroll-target="#install-other-packages-using-mamba">4. Install other packages using mamba</a></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">5. Git</a>
-  <ul class="collapse">
-  <li><a href="#create-new-repo" id="toc-create-new-repo" class="nav-link" data-scroll-target="#create-new-repo">5.1 Create new repo</a></li>
-  <li><a href="#configure-ssh-key-o-github-and-clone-.git-repository" id="toc-configure-ssh-key-o-github-and-clone-.git-repository" class="nav-link" data-scroll-target="#configure-ssh-key-o-github-and-clone-.git-repository">5.2 Configure SSH Key o Github and clone .git repository</a></li>
-  <li><a href="#basic-cmds-commit-push-pull-status" id="toc-basic-cmds-commit-push-pull-status" class="nav-link" data-scroll-target="#basic-cmds-commit-push-pull-status">5.3 Basic Cmds : Commit, push, pull, status</a></li>
-  </ul></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">6. Jupyter lab</a></li>
-  <li><a href="#clone-the-fastai-book-and-install-fastai" id="toc-clone-the-fastai-book-and-install-fastai" class="nav-link" data-scroll-target="#clone-the-fastai-book-and-install-fastai">7. Clone the Fastai book and install fastai</a></li>
-  <li><a href="#create-an-enviroment" id="toc-create-an-enviroment" class="nav-link" data-scroll-target="#create-an-enviroment">8. Create an enviroment</a></li>
-  <li><a href="#creating-paperspace-notebook" id="toc-creating-paperspace-notebook" class="nav-link" data-scroll-target="#creating-paperspace-notebook">9. Creating paperspace notebook</a></li>
-  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">10. Google Colab</a></li>
-  <li><a href="#best-option-to-access-the-book-and-notebooks" id="toc-best-option-to-access-the-book-and-notebooks" class="nav-link" data-scroll-target="#best-option-to-access-the-book-and-notebooks">11. Best option to access the book and notebooks</a></li>
-  </ul></li>
-  <li><a href="#cap-01" id="toc-cap-01" class="nav-link" data-scroll-target="#cap-01">Cap 01</a>
-  <ul class="collapse">
-  <li><a href="#step-by-step-to-create-the-first-model" id="toc-step-by-step-to-create-the-first-model" class="nav-link" data-scroll-target="#step-by-step-to-create-the-first-model">Step by step to create the first model</a>
+  <li><a href="#step-by-step-to-create-the-first-model" id="toc-step-by-step-to-create-the-first-model" class="nav-link active" data-scroll-target="#step-by-step-to-create-the-first-model">Step by step to create the first model</a>
   <ul class="collapse">
   <li><a href="#is-michael-jackson-alive" id="toc-is-michael-jackson-alive" class="nav-link" data-scroll-target="#is-michael-jackson-alive">Is Michael Jackson alive ?</a></li>
   <li><a href="#step-2-install-packages" id="toc-step-2-install-packages" class="nav-link" data-scroll-target="#step-2-install-packages">STEP 2: install packages</a></li>
@@ -188,28 +161,25 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#step-14-create-the-app" id="toc-step-14-create-the-app" class="nav-link" data-scroll-target="#step-14-create-the-app">STEP 14: Create the app</a></li>
   <li><a href="#step-15-test-the-app" id="toc-step-15-test-the-app" class="nav-link" data-scroll-target="#step-15-test-the-app">STEP 15: Test the APP</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#cap-2" id="toc-cap-2" class="nav-link" data-scroll-target="#cap-2">Cap 2</a></li>
-  <li><a href="#cap-3" id="toc-cap-3" class="nav-link" data-scroll-target="#cap-3">Cap 3</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/brunodeabreu/SitePessoal/edit/main/notas/2023-09-01-pre-work-deep-learning/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/brunodeabreu/SitePessoal/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/brunodeabreu/SitePessoal/edit/main/posts/2022-09-30-first-cnn-model/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/brunodeabreu/SitePessoal/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Deep learning for Coders fast.ai</h1>
+<h1 class="title">Step by step to create a first computer vision model</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">DL</div>
-    <div class="quarto-category">python</div>
     <div class="quarto-category">fastai</div>
+    <div class="quarto-category">pytorch</div>
+    <div class="quarto-category">CNN</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    <p>Pre-Work : a hands-on coding course from fast.ai</p>
+    <p>This tutorial describe how to create a computer vision model to classify if the picture is from real Michael Jackson or a look alike person</p>
   </div>
 </div>
 
@@ -219,14 +189,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p><a href="https://brunodeabreu.github.io">Bruno</a> </p>
+             <p>Bruno Machado </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 1, 2023</p>
+      <p class="date">September 18, 2023</p>
     </div>
   </div>
   
@@ -236,213 +206,11 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="prep-work" class="level1">
-<h1>Prep-Work</h1>
-<section id="terminal" class="level2">
-<h2 class="anchored" data-anchor-id="terminal">1. Terminal</h2>
-<p>On Windows we can install PowerShell and WSL using, the first time you</p>
-<pre><code>wsl --install</code></pre>
-<ul>
-<li>Tips :
-<ul>
-<li>Terminal Full Screen : <code>&lt;Alt+Enter&gt;</code></li>
-<li>Switch between users : <code>sudo -u &lt;user&gt; -i</code></li>
-<li>Check version and python location : <code>which python</code></li>
-<li>Install everything in <code>homedir</code> to do not mix the system python/files with our version of python used to DEV and experiment</li>
-</ul></li>
-</ul>
-<section id="tmux" class="level3">
-<h3 class="anchored" data-anchor-id="tmux">1.1 tmux</h3>
-<p>To install tmux <code>sudo apt install tmux</code></p>
-<ul>
-<li><a href="https://tmuxcheatsheet.com/">https://tmuxcheatsheet.com/</a></li>
-<li><code>Ctrl + b + %</code> : Divide terminal in the middle vertical</li>
-<li><code>Ctrl + b + "</code> : Divide terminal in the middle horizontal</li>
-<li><code>Ctrl + b + direction</code> : Move between terminals</li>
-<li><code>Ctrl + b + z</code> : zoom in or zoom out a spefic terminal</li>
-<li><code>Ctrl + d</code> : close</li>
-</ul>
-<p><br></p>
-</section>
-</section>
-<section id="install-python" class="level2">
-<h2 class="anchored" data-anchor-id="install-python">2. Install python</h2>
-<ul>
-<li>Github for conda mini-forge and mamba-forge installer <a href="https://github.com/conda-forge/miniforge">conda-forge/miniforge</a></li>
-<li>Linux Manbaforge install</li>
-</ul>
-<pre><code>wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh</code></pre>
-<ul>
-<li>Install Mambaforge, this going to install several libsn</li>
-</ul>
-<pre><code>  bash Mambaforge-Linux-x86_64.sh </code></pre>
-<ul>
-<li>The command <code>which python</code> should show right now <code>/home/bruno/mambaforge/bin/python</code></li>
-</ul>
-<p><br></p>
-</section>
-<section id="setup-fastai" class="level2">
-<h2 class="anchored" data-anchor-id="setup-fastai">3. Setup <code>fastai</code></h2>
-<section id="setup-conda-install" class="level3">
-<h3 class="anchored" data-anchor-id="setup-conda-install">3.1 Setup conda install</h3>
-<p>To setup fastai in our notebook <a href="https://github.com/fastai/fastsetup">Github-Fastsetup</a></p>
-<ul>
-<li>Run the wget to donwload the setupconda.sh and install</li>
-</ul>
-<pre><code>wget https://raw.githubusercontent.com/fastai/fastsetup/master/setup-conda.sh
-
-bash setup-conda.sh
-</code></pre>
-<p><br></p>
-</section>
-</section>
-<section id="install-other-packages-using-mamba" class="level2">
-<h2 class="anchored" data-anchor-id="install-other-packages-using-mamba">4. Install other packages using mamba</h2>
-<p><strong>Conda</strong> and <strong>Mamba</strong> is two ways of doing the same thing, however today mamba is very fast</p>
-<ul>
-<li><p>Install ipython : <code>mamba install ipython</code></p></li>
-<li><p>Pytorch install : <a href="https://pytorch.org/get-started/locally/">pytorch get-started</a></p>
-<ul>
-<li><p>CPU : <code>mamba install pytorch torchvision torchaudio cpuonly -c pytorch</code></p></li>
-<li><p>CUDA : <code>mamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia</code></p></li>
-<li><p>Test : ipython -&gt; import torch</p></li>
-</ul></li>
-<li><p>Install Jupyter Lab : <code>mamba install jupyterlab</code></p>
-<ul>
-<li>Create a alias to <em>jupyter lab –no-browser</em> : <code>alias jl=jupyter lab --no-browser</code></li>
-</ul></li>
-<li><p>Install ipywidgets : <code>mamba install ipywidgets</code></p></li>
-</ul>
-</section>
-<section id="git" class="level2">
-<h2 class="anchored" data-anchor-id="git">5. Git</h2>
-<p>Git repository is a folder that contain files and sub-folders that we can store and git keeps a copy of every version of files</p>
-<section id="create-new-repo" class="level3">
-<h3 class="anchored" data-anchor-id="create-new-repo">5.1 Create new repo</h3>
-<p>The below figure describe how to create a new repo we can :</p>
-<ul>
-<li>Make the repo private or <strong>public</strong></li>
-<li>Add a readme file</li>
-<li>Configure <strong>.gitignore</strong></li>
-<li>Choose a license</li>
-</ul>
-<p>s ::: {.callout-important} DO NOT share password or keys on github :::</p>
-</section>
-<section id="configure-ssh-key-o-github-and-clone-.git-repository" class="level3">
-<h3 class="anchored" data-anchor-id="configure-ssh-key-o-github-and-clone-.git-repository">5.2 Configure SSH Key o Github and clone .git repository</h3>
-<p>STEPS :</p>
-<ol type="1">
-<li><p>On terminal create a public key <code>ssh-keygen</code>, it will create public (<em>id_rsa.pub</em>) and private (<em>id_rsa</em>) keys</p></li>
-<li><p>In github.com/settings/ssh/ click in <code>New SSH Key</code> and add the content of <em>id_rsa.pub</em></p></li>
-<li><p>Now you will be able to clone the .git repository and save your changes</p></li>
-</ol>
-</section>
-<section id="basic-cmds-commit-push-pull-status" class="level3">
-<h3 class="anchored" data-anchor-id="basic-cmds-commit-push-pull-status">5.3 Basic Cmds : Commit, push, pull, status</h3>
-<p>The complete list of <a href="https://git-scm.com/docs/git#_git_commands">git commands</a></p>
-<ul>
-<li><strong>Commit</strong> : <code>git commit -m &lt;message&gt;</code></li>
-<li><strong>Push</strong> : <code>git push</code></li>
-<li><strong>Pull</strong> : <code>git pull</code></li>
-<li><strong>add</strong> : <code>git add &lt;file&gt;</code></li>
-<li><strong>remove</strong> : <code>git rm &lt;file&gt;</code></li>
-<li><strong>status</strong> : <code>git status</code></li>
-</ul>
-</section>
-</section>
-<section id="jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab">6. Jupyter lab</h2>
-<p>To start the jupyter notebook we can issue : <code>jupyter lab --no-browser</code></p>
-<p>Tip :</p>
-<ul>
-<li><p>create an alias like <code>alias jl=jupyter lab --no-browser</code> and just issue <code>jl</code> to start the jupyter lab</p></li>
-<li><p><a href="https://docs.jupyter.org/en/latest/">Jupyter Docs</a></p></li>
-</ul>
-</section>
-<section id="clone-the-fastai-book-and-install-fastai" class="level2">
-<h2 class="anchored" data-anchor-id="clone-the-fastai-book-and-install-fastai">7. Clone the Fastai book and install fastai</h2>
-<p>STEPS:</p>
-<ol type="1">
-<li><p>Go to <a href="https://github.com/fastai/fastbook">fastbook on github</a> and click on Fork to create your copy of the book</p></li>
-<li><p>Clone your version of book : <code>git clone git@github.com:brunodeabreu/fastbook.git</code></p></li>
-<li><p>Install fastai : <code>mamba install -c fastchan fastai</code></p>
-<ul>
-<li><a href="https://docs.fast.ai/">docs.fast.ai</a></li>
-</ul></li>
-<li><p>Install fastbook : <code>mamba install -c fastchan fastbok</code> or <code>pip instal -Uqq fastbook</code></p></li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When we install fastbook it also install fastai</p>
-</div>
-</div>
-</section>
-<section id="create-an-enviroment" class="level2">
-<h2 class="anchored" data-anchor-id="create-an-enviroment">8. Create an enviroment</h2>
-<p>STEPS :</p>
-<ol type="1">
-<li><p>Create : <code>mamba create -n tmp 'python&lt;3.10'</code> fastcore</p></li>
-<li><p>Activate: <code>mamba activate  tmp</code></p></li>
-<li><p>Deactivate: <code>mamba deactivate tmp</code></p></li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>To return to (base) we can only issue <code>conda activate</code></p>
-</div>
-</div>
-</section>
-<section id="creating-paperspace-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="creating-paperspace-notebook">9. Creating paperspace notebook</h2>
-<p>Using <a href="https://www.paperspace.com/artificial-intelligence">https://www.paperspace.com/artificial-intelligence</a> we can get a <strong>FREE</strong> GPU server.</p>
-<p>We can signup with github or gmail account and select <code>gradient</code> it will request you to create a project and after that you can create notebooks/servers.</p>
-</section>
-<section id="google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="google-colab">10. Google Colab</h2>
-<p>STEPS :</p>
-<ol type="1">
-<li><p>Open <a href="https://colab.research.google.com/">colab.research.google.com</a>, you can sigup with your google account</p></li>
-<li><p>Go to Ferramentas -&gt; Configurações -&gt; Gihub -&gt; Autorizar com Github</p></li>
-<li><p>Arquivo -&gt; Abrir notebook -&gt; Select your fastbook repository, if you do not have your own copy fork from fastai/fastbook</p></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/colab_github.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Config Gihub Repo on Colab</figcaption>
-</figure>
-</div>
-<ol start="4" type="1">
-<li><p>Select the notebook and open in a new tab</p></li>
-<li><p>Change the enviroment to TPU : Go to Ambiente de execução -&gt; Alterar tipo de ambiente de exeção -&gt; Select T4 GPU</p></li>
-</ol>
-</section>
-<section id="best-option-to-access-the-book-and-notebooks" class="level2">
-<h2 class="anchored" data-anchor-id="best-option-to-access-the-book-and-notebooks">11. Best option to access the book and notebooks</h2>
-<p>Open the <a href="https://course.fast.ai/Resources/book.html">course.fast.ai</a> on <strong>Colab</strong> session click on each chapter.</p>
-</section>
-</section>
-<section id="cap-01" class="level1">
-<h1>Cap 01</h1>
 <section id="step-by-step-to-create-the-first-model" class="level2">
 <h2 class="anchored" data-anchor-id="step-by-step-to-create-the-first-model">Step by step to create the first model</h2>
 <section id="is-michael-jackson-alive" class="level3">
 <h3 class="anchored" data-anchor-id="is-michael-jackson-alive">Is Michael Jackson alive ?</h3>
-<p><a href="https://www.kaggle.com/brunodeabreu/michael">Kaggle notebook</a></p>
+<p><a href="https://www.kaggle.com/brunodeabreu/michael">Kaggle notebook</a> <a href="https://huggingface.co/spaces/Brunodeabreu/michael">Application</a></p>
 <section id="step-1-create-notebook-on-kaggle" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-create-notebook-on-kaggle">STEP 1 : Create notebook on kaggle</h4>
 <p>On kaggle creare a notebook : File/New notebook</p>
@@ -650,16 +418,9 @@ intf.launch(inline=False)
 </div>
 <p>TRY :</p>
 <p><a href="https://huggingface.co/spaces/Brunodeabreu/michael">is Michael alive ?</a></p>
-</section>
-</section>
-</section>
-<section id="cap-2" class="level1">
-<h1>Cap 2</h1>
-</section>
-<section id="cap-3" class="level1">
-<h1>Cap 3</h1>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

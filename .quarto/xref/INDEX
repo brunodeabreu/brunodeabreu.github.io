@@ -22,5 +22,20 @@
   },
   "notas/2023-09-06-intro-deep-learning/index.qmd": {
     "index.html": "5cad5690"
+  },
+  "notas/2023-09-01-deep-learning/index.qmd": {
+    "index.html": "edcbaa84"
+  },
+  "notas/2023-09-06-DataCamp/index.qmd": {
+    "index.html": "bec0d89c"
+  },
+  "notas/2023-09-06-GCP-ML-Engineer/index.qmd": {
+    "index.html": "7a771ece"
+  },
+  "posts/2023-09-01-bigquery/index.qmd": {
+    "index.html": "17369cb8"
+  },
+  "posts/2022-09-30-first-cnn-model/index.qmd": {
+    "index.html": "f7f5f79f"
   }
 }
