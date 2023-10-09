@@ -275,3 +275,143 @@ TensorFlow
 #### Lab Natural Language API
 
 ### AI Development Workflow
+
+#### How a machine learns
+
+There are several types of **Neural Networks** that solves different problems
+
+* ANN *artificial neural network*
+* DNN *deep neural network*
+* CNN *convolutional neural network*
+* RNN *recurrent neural network*
+* LLM *large language models*
+
+
+##### STEP 1 : calculate the weighted sum _multiplying each input value by its corresponding weight, and then summing the products_
+
+![Step 1](img/how_nn_works_1.png)
+
+<br>
+
+##### STEP 2: apply an activation function to the weighted sum.
+
+
+![STEP 2](img/how_nn_works_2.png)
+
+
+##### STEP 3 :  the weighted sum is calculated for the output layer
+
+##### STEP 4 :  apply an activation function to the weighted sum
+
+![Result](img/how_nn_works_3.png)
+
+##### STEP 5 : calculate the cost function to minimize the difference.
+
+![STEP 5](img/how_nn_works_5.png)
+
+
+Cost functions for :
+* regression _(MSE)_
+* classfication _(Cross-entropy)_
+
+
+##### STEP 6: backpropagation
+
+ *if the difference between the predicted and actual results is significant, you must go back to adjust weights and biases to minimize the cost function.*
+
+![STEP 6](img/how_nn_works_6.png)
+
+
+##### STEP 7: Interate the process (epoch)
+
+![STEP 7](img/how_nn_works_7.png)
+
+
+* we can set the number of epochs as a hyperparameter in training
+* we can tell that the cost function has reached its optimum when the value stops decreasing, even after many iterations.
+
+> This is how a neural network learns : It iterates the learning by continuously adjusting weights to improve behavior until it reaches the best result.
+
+
+##### What is an activation function ? 
+
+>  activation function is used to prevent linearity or add non-linearity.
+
+* ReLU
+* Sigmoid : binary classfication
+* Softmax : multi-class classification
+* TanH
+* etc ...
+
+
+
+
+#### ML workflow
+
+Stages :
+
+1. Data preparation  (Upload data and  Feature engineer) 
+2. Model development 
+3. Model serving 
+
+
+#### Data preparation
+
+During this stage, you must upload data and then prepare it for model training with feature engineering.
+
+
+* feature engineering: the data must be processed before the model starts training.
+* Vertex AI provides a function called Vertex AI Feature Store, which is a centralized repository to organize, store, and serve features.
+
+
+
+#### Model development 
+
+After data is ready it is time to training the model, this stage involves two iterative steps : 
+
+1. Model training
+2. Model evaluation
+
+
+Vertex AI provides extensive evaluation metrics to help determine a model’s performance. A confusion matrix is a specific performance measurement for machine learning classification problems.
+
+![Confusion Matrix](img/confusion_matrix.png)
+
+
+**Recall** : refers to all the positive cases, and looks at how many were predicted correctly.
+**Precision** : refers to all the cases predicted as positive, and how many are actually positive.
+
+![](img/precision_recall_confusion_matrix.png)
+
+
+#### Model serving
+
+On this stage we have two steps : 
+
+1. Deploy model
+2. Monitor the model
+
+There are 3 options to deploy a model
+
+1. Endpoint
+2. Batch prediction
+3. Offline prediction
+
+
+To monitor there are a toolkit **Vertex AI Pipelines**
+
+
+
+
+####  MLOps and workflow automation
+
+> MLOps means automating and monitoring each step of the ML system construction to enable continuous integration, training, and delivery.
+
+* MLOps on Vertex AI is a tool kit called Vertex AI Pipelines that supports : 
+  * Kubeflow Pipelines, or KFP, and 
+  * TensorFlow Extended, or TFX.
+
+
+
+
+

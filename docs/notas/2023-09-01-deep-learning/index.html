@@ -144,7 +144,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cap-01" id="toc-cap-01" class="nav-link active" data-scroll-target="#cap-01">Cap 01</a>
+  <li><a href="#cap-02---production" id="toc-cap-02---production" class="nav-link active" data-scroll-target="#cap-02---production">Cap 02 - Production</a>
+  <ul class="collapse">
+  <li><a href="#clean-the-data" id="toc-clean-the-data" class="nav-link" data-scroll-target="#clean-the-data">Clean the data</a></li>
+  </ul></li>
+  <li><a href="#cap-01---intro" id="toc-cap-01---intro" class="nav-link" data-scroll-target="#cap-01---intro">Cap 01 - Intro</a>
   <ul class="collapse">
   <li><a href="#notes-from-video-1" id="toc-notes-from-video-1" class="nav-link" data-scroll-target="#notes-from-video-1">Notes from video 1</a></li>
   </ul></li>
@@ -218,9 +222,38 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<!---# Cap 2 -->
-<section id="cap-01" class="level1">
-<h1>Cap 01</h1>
+<!---# Cap 3 -->
+<section id="cap-02---production" class="level1">
+<h1>Cap 02 - Production</h1>
+<section id="clean-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="clean-the-data">Clean the data</h2>
+<blockquote class="blockquote">
+<p>Before clean the data train the model ?</p>
+</blockquote>
+<ul>
+<li><p>Transform the image <em>(in-memory image transform)</em></p>
+<ul>
+<li><code>ResizeMethod.Squish</code> : Make sure we can see the whole picture</li>
+<li><code>ResizeMethod.Pad, pad_mode='zeros'</code> : can see the whole image with better ratio</li>
+<li><code>RandomResizeCrop</code> : Different bits (crop/size) of image each time it is called Data Augmentation, can also use <code>aug_transforms()</code></li>
+</ul></li>
+<li><p>Confusion Matrix</p>
+<ul>
+<li>We can use the confustion matrix to identify the hard category to identify/classifier</li>
+<li>On fastai there are the <code>ClassificationInterpretation</code> object that will generate the Confusion Matrix</li>
+</ul></li>
+</ul>
+<pre><code>interp = ClassificationInterpretation.from_learn(lern)
+interp.plot_confusion_matrix()</code></pre>
+<ul>
+<li>It also can plot <strong>Top Losses</strong> <em>It tells us the places where the <strong>loss</strong> is the highest</em></li>
+</ul>
+<pre><code>interp = ClassificationInterpretation.from_learn(lern)
+interp.plot_top_losses(5, nrows=1, figsize=(17,4))</code></pre>
+</section>
+</section>
+<section id="cap-01---intro" class="level1">
+<h1>Cap 01 - Intro</h1>
 <section id="notes-from-video-1" class="level2">
 <h2 class="anchored" data-anchor-id="notes-from-video-1">Notes from video 1</h2>
 <p><strong>Motivation</strong> :</p>

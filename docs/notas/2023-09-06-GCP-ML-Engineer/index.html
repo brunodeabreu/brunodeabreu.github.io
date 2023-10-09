@@ -441,8 +441,161 @@ FROM
 </section>
 <section id="ai-development-workflow" class="level3">
 <h3 class="anchored" data-anchor-id="ai-development-workflow">AI Development Workflow</h3>
+<section id="how-a-machine-learns" class="level4">
+<h4 class="anchored" data-anchor-id="how-a-machine-learns">How a machine learns</h4>
+<p>There are several types of <strong>Neural Networks</strong> that solves different problems</p>
+<ul>
+<li>ANN <em>artificial neural network</em></li>
+<li>DNN <em>deep neural network</em></li>
+<li>CNN <em>convolutional neural network</em></li>
+<li>RNN <em>recurrent neural network</em></li>
+<li>LLM <em>large language models</em></li>
+</ul>
+<section id="step-1-calculate-the-weighted-sum-multiplying-each-input-value-by-its-corresponding-weight-and-then-summing-the-products" class="level5">
+<h5 class="anchored" data-anchor-id="step-1-calculate-the-weighted-sum-multiplying-each-input-value-by-its-corresponding-weight-and-then-summing-the-products">STEP 1 : calculate the weighted sum <em>multiplying each input value by its corresponding weight, and then summing the products</em></h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/how_nn_works_1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Step 1</figcaption>
+</figure>
+</div>
+<p><br></p>
+</section>
+<section id="step-2-apply-an-activation-function-to-the-weighted-sum." class="level5">
+<h5 class="anchored" data-anchor-id="step-2-apply-an-activation-function-to-the-weighted-sum.">STEP 2: apply an activation function to the weighted sum.</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/how_nn_works_2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">STEP 2</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-3-the-weighted-sum-is-calculated-for-the-output-layer" class="level5">
+<h5 class="anchored" data-anchor-id="step-3-the-weighted-sum-is-calculated-for-the-output-layer">STEP 3 : the weighted sum is calculated for the output layer</h5>
+</section>
+<section id="step-4-apply-an-activation-function-to-the-weighted-sum" class="level5">
+<h5 class="anchored" data-anchor-id="step-4-apply-an-activation-function-to-the-weighted-sum">STEP 4 : apply an activation function to the weighted sum</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/how_nn_works_3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Result</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-5-calculate-the-cost-function-to-minimize-the-difference." class="level5">
+<h5 class="anchored" data-anchor-id="step-5-calculate-the-cost-function-to-minimize-the-difference.">STEP 5 : calculate the cost function to minimize the difference.</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/how_nn_works_5.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">STEP 5</figcaption>
+</figure>
+</div>
+<p>Cost functions for : * regression <em>(MSE)</em> * classfication <em>(Cross-entropy)</em></p>
+</section>
+<section id="step-6-backpropagation" class="level5">
+<h5 class="anchored" data-anchor-id="step-6-backpropagation">STEP 6: backpropagation</h5>
+<p><em>if the difference between the predicted and actual results is significant, you must go back to adjust weights and biases to minimize the cost function.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/how_nn_works_6.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">STEP 6</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-7-interate-the-process-epoch" class="level5">
+<h5 class="anchored" data-anchor-id="step-7-interate-the-process-epoch">STEP 7: Interate the process (epoch)</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/how_nn_works_7.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">STEP 7</figcaption>
+</figure>
+</div>
+<ul>
+<li>we can set the number of epochs as a hyperparameter in training</li>
+<li>we can tell that the cost function has reached its optimum when the value stops decreasing, even after many iterations.</li>
+</ul>
+<blockquote class="blockquote">
+<p>This is how a neural network learns : It iterates the learning by continuously adjusting weights to improve behavior until it reaches the best result.</p>
+</blockquote>
+</section>
+<section id="what-is-an-activation-function" class="level5">
+<h5 class="anchored" data-anchor-id="what-is-an-activation-function">What is an activation function ?</h5>
+<blockquote class="blockquote">
+<p>activation function is used to prevent linearity or add non-linearity.</p>
+</blockquote>
+<ul>
+<li>ReLU</li>
+<li>Sigmoid : binary classfication</li>
+<li>Softmax : multi-class classification</li>
+<li>TanH</li>
+<li>etc …</li>
+</ul>
+</section>
+</section>
+<section id="ml-workflow" class="level4">
+<h4 class="anchored" data-anchor-id="ml-workflow">ML workflow</h4>
+<p>Stages :</p>
+<ol type="1">
+<li>Data preparation (Upload data and Feature engineer)</li>
+<li>Model development</li>
+<li>Model serving</li>
+</ol>
+</section>
+<section id="data-preparation" class="level4">
+<h4 class="anchored" data-anchor-id="data-preparation">Data preparation</h4>
+<p>During this stage, you must upload data and then prepare it for model training with feature engineering.</p>
+<ul>
+<li>feature engineering: the data must be processed before the model starts training.</li>
+<li>Vertex AI provides a function called Vertex AI Feature Store, which is a centralized repository to organize, store, and serve features.</li>
+</ul>
+</section>
+<section id="model-development" class="level4">
+<h4 class="anchored" data-anchor-id="model-development">Model development</h4>
+<p>After data is ready it is time to training the model, this stage involves two iterative steps :</p>
+<ol type="1">
+<li>Model training</li>
+<li>Model evaluation</li>
+</ol>
+<p>Vertex AI provides extensive evaluation metrics to help determine a model’s performance. A confusion matrix is a specific performance measurement for machine learning classification problems.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/confusion_matrix.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Confusion Matrix</figcaption>
+</figure>
+</div>
+<p><strong>Recall</strong> : refers to all the positive cases, and looks at how many were predicted correctly. <strong>Precision</strong> : refers to all the cases predicted as positive, and how many are actually positive.</p>
+<p><img src="img/precision_recall_confusion_matrix.png" class="img-fluid"></p>
+</section>
+<section id="model-serving" class="level4">
+<h4 class="anchored" data-anchor-id="model-serving">Model serving</h4>
+<p>On this stage we have two steps :</p>
+<ol type="1">
+<li>Deploy model</li>
+<li>Monitor the model</li>
+</ol>
+<p>There are 3 options to deploy a model</p>
+<ol type="1">
+<li>Endpoint</li>
+<li>Batch prediction</li>
+<li>Offline prediction</li>
+</ol>
+<p>To monitor there are a toolkit <strong>Vertex AI Pipelines</strong></p>
+</section>
+<section id="mlops-and-workflow-automation" class="level4">
+<h4 class="anchored" data-anchor-id="mlops-and-workflow-automation">MLOps and workflow automation</h4>
+<blockquote class="blockquote">
+<p>MLOps means automating and monitoring each step of the ML system construction to enable continuous integration, training, and delivery.</p>
+</blockquote>
+<ul>
+<li>MLOps on Vertex AI is a tool kit called Vertex AI Pipelines that supports :
+<ul>
+<li>Kubeflow Pipelines, or KFP, and</li>
+<li>TensorFlow Extended, or TFX.</li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 </section>
 </section>

@@ -11,9 +11,53 @@ image: img/capa.jpeg
 ---
 
 
-<!---# Cap 2 --> 
+<!---# Cap 3 -->
 
-# Cap 01
+# Cap 02 - Production
+
+
+## Clean the data
+
+> Before clean the data train the model  ? 
+
+* Diffent ways to resize and transform the image *(this is in-memory image transformation)*
+
+  * `ResizeMethod.Squish`  : Make sure we can see the whole picture
+  * `ResizeMethod.Pad, pad_mode='zeros'` : can see the whole image with better ratio
+  * `RandomResizeCrop` : Different bits (crop/size) of image each time it is called **Data Augmentation**, can also use `aug_transforms()`
+
+
+* Confusion Matrix
+
+  * We can use the confustion matrix to identify the hardiest category to identify/classify 
+  * On fastai there are the `ClassificationInterpretation` object that will generate the Confusion Matrix
+
+```
+interp = ClassificationInterpretation.from_learn(lern)
+interp.plot_confusion_matrix()
+```
+
+  * We can plot **Top Losses**
+  *It tells us the places where the **loss** is the highest*
+
+```
+interp = ClassificationInterpretation.from_learn(lern)
+interp.plot_top_losses(5, nrows=1, figsize=(17,4))
+```
+  * After use those functions we can call `ImageClassifierCleaner()` to clean up the ones that are wrongly label on dataset and remove from dataset
+
+::: {.callout-tip}
+Before we clean up the dataset, always build a model to find out what things are difficult to recognize in your dataset and to find the things that the model can help you find data problems
+:::
+
+
+
+
+
+
+
+
+# Cap 01 - Intro
 
 ## Notes from video 1
 
