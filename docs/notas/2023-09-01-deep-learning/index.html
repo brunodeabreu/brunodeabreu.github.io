@@ -144,7 +144,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cap-02---production" id="toc-cap-02---production" class="nav-link active" data-scroll-target="#cap-02---production">Cap 02 - Production</a>
+  <li><a href="#cap-3-how-does-a-neural-net-reall-work" id="toc-cap-3-how-does-a-neural-net-reall-work" class="nav-link active" data-scroll-target="#cap-3-how-does-a-neural-net-reall-work">Cap 3 How does a neural net reall work ?</a>
+  <ul class="collapse">
+  <li><a href="#whch-image-models-are-best" id="toc-whch-image-models-are-best" class="nav-link" data-scroll-target="#whch-image-models-are-best">Whch image models are best ?</a></li>
+  <li><a href="#understand-the-model" id="toc-understand-the-model" class="nav-link" data-scroll-target="#understand-the-model">Understand the model</a>
+  <ul class="collapse">
+  <li><a href="#loss-function" id="toc-loss-function" class="nav-link" data-scroll-target="#loss-function">Loss function:</a></li>
+  <li><a href="#learning-rate" id="toc-learning-rate" class="nav-link" data-scroll-target="#learning-rate">Learning Rate</a></li>
+  <li><a href="#relu" id="toc-relu" class="nav-link" data-scroll-target="#relu">ReLU</a></li>
+  <li><a href="#matrix-multiplication" id="toc-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-multiplication">Matrix Multiplication</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#cap-02---production" id="toc-cap-02---production" class="nav-link" data-scroll-target="#cap-02---production">Cap 02 - Production</a>
   <ul class="collapse">
   <li><a href="#clean-the-data" id="toc-clean-the-data" class="nav-link" data-scroll-target="#clean-the-data">Clean the data</a></li>
   </ul></li>
@@ -223,6 +234,202 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <!---# Cap 3 -->
+<section id="cap-3-how-does-a-neural-net-reall-work" class="level1">
+<h1>Cap 3 How does a neural net reall work ?</h1>
+<section id="whch-image-models-are-best" class="level2">
+<h2 class="anchored" data-anchor-id="whch-image-models-are-best">Whch image models are best ?</h2>
+<p>The kaggle notebook <a href="https://www.kaggle.com/code/jhoward/which-image-models-are-best">Which image models are best</a></p>
+<p><a href="https://timm.fast.ai/">PyTorch Image Models</a> (timm) is a library by Ross Wightman which provides state-of-the-art pre-trained computer vision models.</p>
+<p>To use <strong>timm</strong> we need :</p>
+<ol type="1">
+<li>Install : <code>conda install timm</code> or <code>pip install timm</code></li>
+<li>Import : <code>import timm</code></li>
+<li>Sample of list convnext models: <code>timm.list_models('convnext')</code></li>
+</ol>
+</section>
+<section id="understand-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="understand-the-model">Understand the model</h2>
+<ul>
+<li><p>Categories : fast.ai always save the vocab or categories inside the data loaders <code>learn.dls.vocab</code></p></li>
+<li><p>What is <strong>model.pkl</strong> file ?</p></li>
+</ul>
+<p>The model or learn there are two main things :</p>
+<ol type="1">
+<li>The list of pre-processing steps to prepare your image to model</li>
+<li>The trained model, the arquitecture or layers</li>
+</ol>
+<p>The below model was trained based on <strong>resnet18</strong></p>
+<pre><code>Sequential(
+  (0): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (7): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (1): Sequential(
+    (0): AdaptiveConcatPool2d(
+      (ap): AdaptiveAvgPool2d(output_size=1)
+      (mp): AdaptiveMaxPool2d(output_size=1)
+    )
+    (1): fastai.layers.Flatten(full=False)
+    (2): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Dropout(p=0.25, inplace=False)
+    (4): Linear(in_features=1024, out_features=512, bias=False)
+    (5): ReLU(inplace=True)
+    (6): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): Dropout(p=0.5, inplace=False)
+    (8): Linear(in_features=512, out_features=2, bias=False)
+  )
+)
+</code></pre>
+<ul>
+<li>To check detail about one layer we can use <code>get_submodule</code> from pyTorch, so lets check <em>0.4.0.conv1</em> layer</li>
+</ul>
+<pre><code>l = learn.model.get_submodule('0.4.0.conv1')
+l</code></pre>
+<p><em>Output:</em></p>
+<p>Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)</p>
+<p><em>Parameters</em></p>
+<pre><code>list(l.parameters())</code></pre>
+<p><em>Ouput is a tensor:</em></p>
+<pre><code>[Parameter containing:
+ tensor([[[[ 5.7570e-02, -9.5167e-02, -2.0318e-02],
+           [-7.4519e-02, -7.9924e-01, -2.1283e-01],
+           [ 6.5605e-02, -9.6507e-02, -1.2085e-02]],
+ 
+          [[-6.9990e-03,  1.4247e-02,  5.3876e-04],
+           [ 4.1250e-02, -1.6123e-01, -2.3197e-02],
+           [ 3.2788e-03,  7.1502e-03,  7.1681e-02]],
+ 
+          [[-2.3627e-09, -3.9269e-08, -3.2971e-08],
+           [ 2.1737e-08,  8.3299e-09,  1.2543e-08],
+           [ 1.1381e-08,  8.8095e-09,  1.5506e-08]],
+ 
+          ...,</code></pre>
+<section id="loss-function" class="level3">
+<h3 class="anchored" data-anchor-id="loss-function">Loss function:</h3>
+<p>Is the function that calculate the error metric that we would minimize</p>
+<p>Sample:</p>
+<p>MSE</p>
+<pre><code>def mse(preds, acts): return ((preds - acts)**2).mean()</code></pre>
+<p><em>How do we minimize the loss function ? </em></p>
+<ul>
+<li>We can change the parameters and see if loss improves</li>
+<li>Or use derivative, basically derivative tells you : <em>if you increase the input, your output increase or decrease</em> this is the <strong>slope</strong> or <strong>gradient</strong></li>
+<li>To request pyTorch to calculate the gradient just need to set <code>requires_grad()</code> to a tensor</li>
+<li>If we call <code>loss.backward()</code> It will calculate the gradient on the result of loss function</li>
+</ul>
+</section>
+<section id="learning-rate" class="level3">
+<h3 class="anchored" data-anchor-id="learning-rate">Learning Rate</h3>
+<p>is a Hyperparameter that we use to calculate parameters</p>
+<p><strong>Optimization</strong> - Gradient descent</p>
+<ul>
+<li>The goal is minimize the loss function by deacrease this gradient multiplying by a small number such as <code>0.01</code> this number is the <em>Learning rate</em></li>
+<li>On the end of process we end up with a small loss</li>
+</ul>
+<p><img src="img/optimization_gd.png" class="img-fluid"></p>
+<ul>
+<li>If learning rate is two small, it will take so long time to try to converge</li>
+<li>If learning rate is two big will never converge</li>
+</ul>
+<p><strong>Optimization</strong> - Gradient descent</p>
+<ul>
+<li>The goal is minimize the loss function by deacrease this gradient multiplying by a small number such as <code>0.01</code> this number is the <em>Learning rate</em></li>
+<li>On the end of process we end up with a small loss</li>
+</ul>
+<p><img src="img/learning_rate_1.png.png" class="img-fluid"></p>
+</section>
+<section id="relu" class="level3">
+<h3 class="anchored" data-anchor-id="relu">ReLU</h3>
+<pre><code>def rectified_liner(m,b,x):
+  y = m*x+b
+  return torch.clip(y, 0.)</code></pre>
+<p>With this function we can use double or more ReLu and manipulate more dimmendations and construct a precise model</p>
+</section>
+<section id="matrix-multiplication" class="level3">
+<h3 class="anchored" data-anchor-id="matrix-multiplication">Matrix Multiplication</h3>
+<p>How to do a marix multiplication <a href="matrixmultiplication.xyz">matrixmultiplication.xyz</a></p>
+<p><a href="https://docs.google.com/spreadsheets/d/18zT304CMl5SlN86tqTvrMEQVv3o5a7j89KYrHxog1KM/edit?usp=sharing">Titanic on excel</a></p>
+</section>
+</section>
+</section>
 <section id="cap-02---production" class="level1">
 <h1>Cap 02 - Production</h1>
 <section id="clean-the-data" class="level2">
@@ -231,25 +438,41 @@ ul.task-list li input[type="checkbox"] {
 <p>Before clean the data train the model ?</p>
 </blockquote>
 <ul>
-<li><p>Transform the image <em>(in-memory image transform)</em></p>
+<li><p>Diffent ways to resize and transform the image <em>(this is in-memory image transformation)</em></p>
 <ul>
 <li><code>ResizeMethod.Squish</code> : Make sure we can see the whole picture</li>
 <li><code>ResizeMethod.Pad, pad_mode='zeros'</code> : can see the whole image with better ratio</li>
-<li><code>RandomResizeCrop</code> : Different bits (crop/size) of image each time it is called Data Augmentation, can also use <code>aug_transforms()</code></li>
+<li><code>RandomResizeCrop</code> : Different bits (crop/size) of image each time it is called <strong>Data Augmentation</strong>, can also use <code>aug_transforms()</code></li>
 </ul></li>
 <li><p>Confusion Matrix</p>
 <ul>
-<li>We can use the confustion matrix to identify the hard category to identify/classifier</li>
+<li>We can use the confustion matrix to identify the hardiest category to identify/classify</li>
 <li>On fastai there are the <code>ClassificationInterpretation</code> object that will generate the Confusion Matrix</li>
 </ul></li>
 </ul>
 <pre><code>interp = ClassificationInterpretation.from_learn(lern)
 interp.plot_confusion_matrix()</code></pre>
 <ul>
-<li>It also can plot <strong>Top Losses</strong> <em>It tells us the places where the <strong>loss</strong> is the highest</em></li>
+<li>We can plot <strong>Top Losses</strong> <em>It tells us the places where the <strong>loss</strong> is the highest</em></li>
 </ul>
 <pre><code>interp = ClassificationInterpretation.from_learn(lern)
 interp.plot_top_losses(5, nrows=1, figsize=(17,4))</code></pre>
+<ul>
+<li>After use those functions we can call <code>ImageClassifierCleaner()</code> to clean up the ones that are wrongly label on dataset and remove from dataset</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before we clean up the dataset, always build a model to find out what things are difficult to recognize in your dataset and to find the things that the model can help you find data problems</p>
+</div>
+</div>
 </section>
 </section>
 <section id="cap-01---intro" class="level1">

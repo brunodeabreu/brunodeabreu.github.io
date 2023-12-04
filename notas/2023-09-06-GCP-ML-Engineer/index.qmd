@@ -37,6 +37,28 @@ image: img/capa.png
 
 <!---## 2. Launching into Machine Learning-->
 
+## How Google Does Machine Learning
+
+### What It Means to be AI-First
+
+
+
+
+### How Google Does ML
+
+### Machine Learning Development with Vertex AI
+
+### Machine Learning Development with Vertex Notebooks
+
+### Best Practices for Implementing Machine Learning on Vertex AI
+
+### Responsible AI Development
+
+
+
+
+
+
 ## 1. Introduction to AI and Machine Learning
 
 This course provide a toolbox which is full of AI tecnologies and tools offered by Google
@@ -287,27 +309,25 @@ There are several types of **Neural Networks** that solves different problems
 * LLM *large language models*
 
 
-##### STEP 1 : calculate the weighted sum _multiplying each input value by its corresponding weight, and then summing the products_
+STEP 1 : calculate the weighted sum _multiplying each input value by its corresponding weight, and then summing the products_
 
-![Step 1](img/how_nn_works_1.png)
+<!--![Step 1](img/how_nn_works_1.png)-->
 
-<br>
-
-##### STEP 2: apply an activation function to the weighted sum.
+STEP 2: apply an activation function to the weighted sum.
 
 
-![STEP 2](img/how_nn_works_2.png)
+<!--![STEP 2](img/how_nn_works_2.png)-->
 
 
-##### STEP 3 :  the weighted sum is calculated for the output layer
+STEP 3 :  the weighted sum is calculated for the output layer
 
-##### STEP 4 :  apply an activation function to the weighted sum
+STEP 4 :  apply an activation function to the weighted sum
 
-![Result](img/how_nn_works_3.png)
+<!--![Result](img/how_nn_works_3.png)-->
 
-##### STEP 5 : calculate the cost function to minimize the difference.
+STEP 5 : calculate the cost function to minimize the difference.
 
-![STEP 5](img/how_nn_works_5.png)
+<!--![STEP 5](img/how_nn_works_5.png)-->
 
 
 Cost functions for :
@@ -315,16 +335,16 @@ Cost functions for :
 * classfication _(Cross-entropy)_
 
 
-##### STEP 6: backpropagation
+STEP 6: backpropagation
 
  *if the difference between the predicted and actual results is significant, you must go back to adjust weights and biases to minimize the cost function.*
 
-![STEP 6](img/how_nn_works_6.png)
+<!--![STEP 6](img/how_nn_works_6.png)-->
 
 
-##### STEP 7: Interate the process (epoch)
+STEP 7: Interate the process (epoch)
 
-![STEP 7](img/how_nn_works_7.png)
+<!--![STEP 7](img/how_nn_works_7.png)-->
 
 
 * we can set the number of epochs as a hyperparameter in training
@@ -375,7 +395,7 @@ After data is ready it is time to training the model, this stage involves two it
 
 Vertex AI provides extensive evaluation metrics to help determine a model’s performance. A confusion matrix is a specific performance measurement for machine learning classification problems.
 
-![Confusion Matrix](img/confusion_matrix.png)
+<!--![Confusion Matrix](img/confusion_matrix.png)-->
 
 
 **Recall** : refers to all the positive cases, and looks at how many were predicted correctly.
@@ -415,3 +435,78 @@ To monitor there are a toolkit **Vertex AI Pipelines**
 
 
 
+
+### Generative AI
+
+Generative AI aims to solve general problems trained with amount of multimodal data.
+
+Behind it we have LLMs *(Large Language Models)* , the revolution starts in 2017 when **Transformers** was invented by Google Researchers.
+
+#### What are _Large Language Models_ ?
+
+  Refer to **large**, **general-purpose** language models can be **pre-trained** and then **fine-tuned** for specific purpose
+
+* Large : 
+  * Large training dataset *PetaBytes*
+  * Large number of parameters *trillions*
+
+* LLM are trained to solve : 
+  * Text classification
+  * Question answering
+  * Document summarization
+  * Text generation
+
+
+#### Use Cases
+
+  * Create :  
+    * Generate description from images 
+    * Improve images
+  
+  * Summarize: 
+    * Videos, audio and paragraphs
+    * Geneate Q&A 
+
+  * Discover
+    * Search for a document
+    * Discover coding bugs
+
+  * Automate
+    * Extract and label contracts
+    * classify feedback and create ticket
+
+
+#### Duet AI
+
+Code assistance provides AI-driven code assistance for cloud users such as application developers and data engineers.
+
+
+#### Model Garden
+
+**Model Garden** is a single place to discover and interact with many of Google’s pre-trained and open-source models
+
+**Categories of models**
+
+  * Foundation models
+    * PaLM for text
+    * PaLM for chat
+    * Imagen for image
+    * Embeddings API for text and image
+    * Chirp for speech
+    * Codey for code generation
+
+  * Task-specific solutions
+    * Entity analysis
+    * Sentiment analysis
+    * Syntax analysis
+    * Content classification
+    * Object detector
+    * Text translation
+
+  * Fine-tunable or open-source models 
+
+#### Generative AI Studio
+
+We can use **Generative AI Studio** to quickly prototype and customize generative AI models with no or low code.
+
+That support Language, Vision and Speech

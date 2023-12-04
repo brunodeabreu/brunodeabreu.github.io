@@ -13,6 +13,295 @@ image: img/capa.jpeg
 
 <!---# Cap 3 -->
 
+# Cap 4 NLP
+
+The idea of fine tune NLP model started with [ULMFIT](https://arxiv.org/abs/1801.06146), which is first presented in a fast.ai course
+
+The ULMFIT process using RNN: 
+
+1. Build a language model using wikipedia text (_Wikitext 103_) , this model try to predict the next word of Wikipedia article.
+2. Add more epochs using IMDb movies review, now our model are good to predict next word of IMDb reviews
+3. Fine tune tune to predict whether or not a movie review was positive or negative sentiment 
+
+
+
+Tokenization : 
+
+* The Huggingface transformers use the Dataset object to tokenize the text
+* Transform the pandas dataframe into huggingface dataset
+
+```
+from datasets import Dataset.DatasetDict
+
+ds = Dataset.from_pandas(df)
+
+```
+
+
+A deep learning model expects numbers as inputs, so we need: 
+
+1. Tokenization : Split each text up into words(_or actually, as we'll see, into tokens_)
+2. Numericalization: Convert each word (_or token_) into a number (_unique ID_)
+
+
+Before we start to tokenizer we need to decide what model to use, for instance access [Hugging Face - Models](https://huggingface.co/models) and search on model hub.
+
+
+**AutoTokenizer** will create a tokenizer appropriae for a given model
+
+```
+model_nm = 'microsoft/debert-v3-small'
+
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+tokz = AutoTokenizer.from_pretrained(model_mn)
+```
+
+
+## Overfitting and Validation/Test dataset
+
+* In time series instead of remove data from the middle it is better to truncate the last weeks
+* Fastai will show the metrics from validation dataset
+* [How (and why) to create a good validation set](https://www.fast.ai/posts/2017-11-13-validation-sets.html)
+
+
+
+
+
+# Cap 3 How does a neural net reall work ? 
+
+## Whch image models are best ? 
+
+The kaggle notebook [Which image models are best](https://www.kaggle.com/code/jhoward/which-image-models-are-best)
+
+
+[PyTorch Image Models](https://timm.fast.ai/) (timm) is a library by Ross Wightman which provides state-of-the-art pre-trained computer vision models.
+
+
+To use **timm** we need : 
+
+1. Install : `conda install timm` or `pip install timm`
+2. Import : `import timm`
+3. Sample of list convnext models: `timm.list_models('convnext')`
+
+
+## Understand the model
+
+* Categories : fast.ai always save the vocab or categories inside the data loaders `learn.dls.vocab`
+
+* What is **model.pkl** file ? 
+
+The model or learn there are two main things : 
+
+1. The list of pre-processing steps to prepare your image to model
+2. The trained model, the arquitecture or layers
+
+The below model was trained based on **resnet18**
+
+```
+Sequential(
+  (0): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (7): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (1): Sequential(
+    (0): AdaptiveConcatPool2d(
+      (ap): AdaptiveAvgPool2d(output_size=1)
+      (mp): AdaptiveMaxPool2d(output_size=1)
+    )
+    (1): fastai.layers.Flatten(full=False)
+    (2): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Dropout(p=0.25, inplace=False)
+    (4): Linear(in_features=1024, out_features=512, bias=False)
+    (5): ReLU(inplace=True)
+    (6): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): Dropout(p=0.5, inplace=False)
+    (8): Linear(in_features=512, out_features=2, bias=False)
+  )
+)
+
+```
+
+* To check detail about one layer we can use `get_submodule` from pyTorch, so lets check *0.4.0.conv1* layer
+
+
+```
+l = learn.model.get_submodule('0.4.0.conv1')
+l
+```
+
+*Output:*
+
+Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+
+
+*Parameters*
+```
+list(l.parameters())
+```
+*Ouput is a tensor:*
+
+```
+[Parameter containing:
+ tensor([[[[ 5.7570e-02, -9.5167e-02, -2.0318e-02],
+           [-7.4519e-02, -7.9924e-01, -2.1283e-01],
+           [ 6.5605e-02, -9.6507e-02, -1.2085e-02]],
+ 
+          [[-6.9990e-03,  1.4247e-02,  5.3876e-04],
+           [ 4.1250e-02, -1.6123e-01, -2.3197e-02],
+           [ 3.2788e-03,  7.1502e-03,  7.1681e-02]],
+ 
+          [[-2.3627e-09, -3.9269e-08, -3.2971e-08],
+           [ 2.1737e-08,  8.3299e-09,  1.2543e-08],
+           [ 1.1381e-08,  8.8095e-09,  1.5506e-08]],
+ 
+          ...,
+```
+
+
+### Loss function:
+
+Is the function that calculate the error metric that we would minimize
+
+Sample: 
+
+MSE
+```
+def mse(preds, acts): return ((preds - acts)**2).mean()
+```
+
+*How do we minimize the loss function ? * 
+
+* We can change the parameters and see if loss improves
+* Or use derivative, basically derivative tells you : *if you increase the input, your output increase or decrease* this is the **slope** or **gradient**
+* To request pyTorch to calculate the gradient just need to set `requires_grad()` to a tensor
+* If we call `loss.backward()` It will calculate the gradient on the result of loss function
+
+
+
+### Learning Rate
+
+is a Hyperparameter that we use to calculate parameters
+
+**Optimization** - Gradient descent
+
+* The goal is minimize the loss function by deacrease this gradient multiplying by a small number such as `0.01` this number is the  *Learning rate*
+* On the end of process we end up with a small loss
+
+![](img/optimization_gd.png)
+
+* If learning rate is two small, it will take so long time to try to converge
+* If learning rate is two big will never converge
+
+**Optimization** - Gradient descent
+
+* The goal is minimize the loss function by deacrease this gradient multiplying by a small number such as `0.01` this number is the  *Learning rate*
+* On the end of process we end up with a small loss
+
+![](img/learning_rate_1.png.png)
+
+
+### ReLU
+
+```
+def rectified_liner(m,b,x):
+  y = m*x+b
+  return torch.clip(y, 0.)
+```
+With this function we can use double or more ReLu and manipulate more dimmendations and construct a precise model
+
+
+### Matrix Multiplication
+
+How to do a marix multiplication [matrixmultiplication.xyz](matrixmultiplication.xyz)
+
+
+[Titanic on excel](https://docs.google.com/spreadsheets/d/18zT304CMl5SlN86tqTvrMEQVv3o5a7j89KYrHxog1KM/edit?usp=sharing)
+
+
+
+
+
+
+
+
 # Cap 02 - Production
 
 
