@@ -144,7 +144,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cap-3-how-does-a-neural-net-reall-work" id="toc-cap-3-how-does-a-neural-net-reall-work" class="nav-link active" data-scroll-target="#cap-3-how-does-a-neural-net-reall-work">Cap 3 How does a neural net reall work ?</a>
+  <li><a href="#cap-4-nlp" id="toc-cap-4-nlp" class="nav-link active" data-scroll-target="#cap-4-nlp">Cap 4 NLP</a>
+  <ul class="collapse">
+  <li><a href="#overfitting-and-validationtest-dataset" id="toc-overfitting-and-validationtest-dataset" class="nav-link" data-scroll-target="#overfitting-and-validationtest-dataset">Overfitting and Validation/Test dataset</a></li>
+  </ul></li>
+  <li><a href="#cap-3-how-does-a-neural-net-reall-work" id="toc-cap-3-how-does-a-neural-net-reall-work" class="nav-link" data-scroll-target="#cap-3-how-does-a-neural-net-reall-work">Cap 3 How does a neural net reall work ?</a>
   <ul class="collapse">
   <li><a href="#whch-image-models-are-best" id="toc-whch-image-models-are-best" class="nav-link" data-scroll-target="#whch-image-models-are-best">Whch image models are best ?</a></li>
   <li><a href="#understand-the-model" id="toc-understand-the-model" class="nav-link" data-scroll-target="#understand-the-model">Understand the model</a>
@@ -234,6 +238,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <!---# Cap 3 -->
+<section id="cap-4-nlp" class="level1">
+<h1>Cap 4 NLP</h1>
+<p>The idea of fine tune NLP model started with <a href="https://arxiv.org/abs/1801.06146">ULMFIT</a>, which is first presented in a fast.ai course</p>
+<p>The ULMFIT process using RNN:</p>
+<ol type="1">
+<li>Build a language model using wikipedia text (<em>Wikitext 103</em>) , this model try to predict the next word of Wikipedia article.</li>
+<li>Add more epochs using IMDb movies review, now our model are good to predict next word of IMDb reviews</li>
+<li>Fine tune tune to predict whether or not a movie review was positive or negative sentiment</li>
+</ol>
+<p>Tokenization :</p>
+<ul>
+<li>The Huggingface transformers use the Dataset object to tokenize the text</li>
+<li>Transform the pandas dataframe into huggingface dataset</li>
+</ul>
+<pre><code>from datasets import Dataset.DatasetDict
+
+ds = Dataset.from_pandas(df)
+</code></pre>
+<p>A deep learning model expects numbers as inputs, so we need:</p>
+<ol type="1">
+<li>Tokenization : Split each text up into words(<em>or actually, as we’ll see, into tokens</em>)</li>
+<li>Numericalization: Convert each word (<em>or token</em>) into a number (<em>unique ID</em>)</li>
+</ol>
+<p>Before we start to tokenizer we need to decide what model to use, for instance access <a href="https://huggingface.co/models">Hugging Face - Models</a> and search on model hub.</p>
+<p><strong>AutoTokenizer</strong> will create a tokenizer appropriae for a given model</p>
+<pre><code>model_nm = 'microsoft/debert-v3-small'
+
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+tokz = AutoTokenizer.from_pretrained(model_mn)</code></pre>
+<section id="overfitting-and-validationtest-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="overfitting-and-validationtest-dataset">Overfitting and Validation/Test dataset</h2>
+<ul>
+<li>In time series instead of remove data from the middle it is better to truncate the last weeks</li>
+<li>Fastai will show the metrics from validation dataset</li>
+<li><a href="https://www.fast.ai/posts/2017-11-13-validation-sets.html">How (and why) to create a good validation set</a></li>
+</ul>
+</section>
+</section>
 <section id="cap-3-how-does-a-neural-net-reall-work" class="level1">
 <h1>Cap 3 How does a neural net reall work ?</h1>
 <section id="whch-image-models-are-best" class="level2">
