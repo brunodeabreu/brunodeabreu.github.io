@@ -1,0 +1,54 @@
+---
+title: "AWS Machine Learning – Specialty"
+description: |
+  AWS Machine Learning – Specialty
+author:
+  - name: Bruno
+    url: https://brunodeabreu.github.io
+date: 2023-09-06
+categories: [datacamp, python, data science]
+image: img/capa.jpeg
+---
+
+
+# AWS Machine Learning – Specialty
+
+
+<!--## Intro do python--> 
+
+## Intro do Machine Learning Concepts 
+
+> ML Definition : A computer program is said to learn from experience **E** with respect to some class of tasks **T** and performance measure **P**, if its performance at ask in **T**, as measured by **P**, improves with experience **E**
+
+ML apply to many business use cases : 
+
+*Industry :* 
+  * Recomendation 
+  * Demand forecast
+  * Computer Vision
+  * Fraud Detection
+  * Medical Diagosis
+  * Stock Market Forecasting
+  * Sentiment Analysis
+
+*Types:*
+  * Supervised : classification and regression
+  * Unsupervised : clustering, anomaly detection, association discovery
+
+
+*ML Algorithms*
+  * Logistic Regression : Binary classification
+  * Decision Trees
+  * Naive Bayes : Probability based
+
+
+
+## Domain
+
+
+**Domain 1** : Data Engineering *create repo, data-ingestion, data-transformation*
+**Domain 2** : Exploratory Data Analysis *prep data for modelin, feature engineering, and data viz for ML*
+**Domain 3** : Modeling *frame business problem as ML problems, select model, train ML, perform hyperparamter optimization, evaluate model*
+**Domain 4** : ML Implementation and Operations *build and deploy ML solutions*
+
+
