@@ -13,6 +13,12 @@ image: img/capa.jpeg
 
 <!---# Cap 3 -->
 
+# Cap 5 Tabular
+
+
+
+
+
 # Cap 4 NLP
 
 The idea of fine tune NLP model started with [ULMFIT](https://arxiv.org/abs/1801.06146), which is first presented in a fast.ai course
@@ -64,7 +70,9 @@ tokz = AutoTokenizer.from_pretrained(model_mn)
 * [How (and why) to create a good validation set](https://www.fast.ai/posts/2017-11-13-validation-sets.html)
 
 
+## Noteook Prof JEREMY HOWARD
 
+https://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners
 
 
 # Cap 3 How does a neural net reall work ? 
@@ -275,7 +283,7 @@ is a Hyperparameter that we use to calculate parameters
 * The goal is minimize the loss function by deacrease this gradient multiplying by a small number such as `0.01` this number is the  *Learning rate*
 * On the end of process we end up with a small loss
 
-![](img/learning_rate_1.png.png)
+![](img/learning_rate_1.png)
 
 
 ### ReLU

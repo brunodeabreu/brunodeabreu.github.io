@@ -1,0 +1,113 @@
+---
+title: "Professional Machine Learning Engineer"
+description: |
+  Google path professional Machine Learning Engineer
+author:
+  - name: Bruno
+    url: https://brunodeabreu.github.io
+date: 2023-09-06
+categories: [gcp, machine learning, google]
+image: img/capa.png
+---
+
+
+# Professional Machine Learning Engineer
+
+[https://cloud.google.com/learn/certification/guides/machine-learning-engineer](https://cloud.google.com/learn/certification/guides/machine-learning-engineer)
+
+## Section 1: Architecting low-code ML solutions (~12% of the exam)
+
+1.1 Developing ML models by using BigQuery ML
+
+* BigQuery is fully managed DW, that can analyse data using SQL, i.e, use SQL to create and execute ML models in BigQuery
+* We can perform both data analytics and build ML models within BigQuery
+* BigQuery ML tunes the parameters for you and helps you manage the ML workflow, also perform some pre-procesing like One-Hot Encoding
+* We create the model inside BigQuery 
+
+_LAB_
+
+[Predicting Visitor Purchases with BigQuery ML](https://partner.cloudskillsboost.google/course_sessions/5210479/labs/423376)
+
+_To read_
+
+* [Big Query intro](https://cloud.google.com/bigquery/docs/bqml-introduction)
+
+* [Big Query Syntax](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
+
+
+1.2 Building AI solutions by using ML APIs.
+
+GCP has several pre-trained  machine learn models that can be used by API(_application programming interface_)   
+
+Pre-trained API offered as a services:
+
+![Pre-trained API](img/pre-trained-api.png)
+
+Generative AI related APIs : 
+
+  * PaLM for text
+  * PaLM for Chat
+  * Image for image
+  * Chirp for speech
+  * Embeddings API for Text and Image
+  * Codey for code generation
+
+
+
+
+
+1.3 Training models by using AutoML.
+
+AutoML apply a non-code solution to build models on VertexAI
+
+
+_To read_
+
+[Intro to VertexAI](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform)
+
+[Custom training - beginner's guide](https://cloud.google.com/vertex-ai/docs/start/training-guide)
+
+[Keras Doc](https://www.tensorflow.org/api_docs/python/tf/keras)
+
+
+
+## Section 2: Collaborating within and across teams to manage data and models (~16% of the exam)
+
+2.1 Exploring and preprocessing organization-wide data (e.g., Cloud Storage, BigQuery, Cloud Spanner, Cloud SQL, Apache Spark, Apache Hadoop). 
+
+2.2 Model prototyping using Jupyter notebooks.
+
+2.3 Tracking and running ML experiments. 
+
+## Section 3: Scaling prototypes into ML models (~18% of the exam)
+
+3.1 Building models. 
+
+3.2 Training models.
+
+3.3 Choosing appropriate hardware for training. 
+
+
+
+## Section 4: Serving and scaling models (~19% of the exam)
+
+4.1 Serving models. 
+
+4.2 Scaling online model serving.
+
+
+## Section 5: Automating and orchestrating ML pipelines (~21% of the exam)
+
+5.1 Developing end-to-end ML pipelines.
+
+5.2 Automating model retraining. 
+
+5.3 Tracking and auditing metadata.
+
+
+## Section 6: Monitoring ML solutions (~14% of the exam)
+
+6.1 Identifying risks to ML solutions.
+
+6.2 Monitoring, testing, and troubleshooting ML solutions.
+

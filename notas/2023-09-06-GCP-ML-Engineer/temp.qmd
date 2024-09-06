@@ -1,0 +1,497 @@
+
+# Professional Machine Learning Engineer
+
+<!---## Build and Deploy Machine Learning Solutions on Vertex AI  -->
+
+<!---## Perform Foundatoinal Data, ML, and AI Tasks-->
+
+<!---## ML Pipeline-->
+
+<!---## Machine Learning Operations (MLOps) : Getting Started-->
+
+<!---## 9. Recomendation Systems-->
+
+<!---## 8. Natural Language Processing-->
+
+<!---## 7. Computer Vision Fundamentals-->
+
+<!---## 6. Production Machine Learning Systems-->
+
+<!---## 5. Machine Learning in the Enterprise-->
+
+<!---## 4. Feature Engineering-->
+
+<!---## 3. TensorFlow-->
+
+<!---## 2. Launching into Machine Learning-->
+
+## How Google Does Machine Learning
+
+### What It Means to be AI-First
+
+### How Google Does ML
+
+### Machine Learning Development with Vertex AI
+
+### Machine Learning Development with Vertex Notebooks
+
+### Best Practices for Implementing Machine Learning on Vertex AI
+
+### Responsible AI Development
+
+
+
+
+
+
+## 1. Introduction to AI and Machine Learning
+
+This course provide a toolbox which is full of AI tecnologies and tools offered by Google
+
+* **Foundation** : cloud essentials 
+* **Developement** : different options to build ML and Workflow
+* **Solutions** :Vertical and horizontal solutions and generative AI
+
+### AI Foundations
+
+#### Why AI and Why Google ? 
+
+Google is a leader in developement of AI and it offers a wide range of tools
+
+and  provides : 
+
+1. State-of-the-art ML **models**
+2. End-to-end model development and MLOps - **Productivity**
+3. Unified data to AI **plataform**
+4. Efficient and scalable AI - **Infrastructure**
+
+
+7 principals AI should be: 
+
+1. **socially beneficial**
+2. **Avoid** creating or reinforcing **unfair bias**
+3. Build and tested for safety
+4. **Accountable** to people
+5. Incorporate privancy **design principles**
+6. Uphold high **standards** of scientific excelence
+7. Made available for uses that accord with these principles
+
+
+
+#### Google Cloud Infrastructure
+ 
+* **Computer Engine** : IaaS with compute , storage, network similar to a phisical machine 
+* **Google Kubernetes Engine** : Containerized applications
+* **App Engine** : PaaS, binds code to libraries and developed can be focused on appl logic
+* **Cloud Functions** : Executes code in response to events. Functions as a services
+* **Cloud Run** : Fully managed platform, auto scales up and down, charge only by resources you use
+
+
+##### CPU, GPU and TPU
+
+* CPU : Central processing unit
+* GPU : Graphics processing unit
+* TPU : Tensor Processing Unit
+
+::: {.callout-note title="TPU"}
+TPU are **faster** and more **energy-efficient** for AI and ML applications.
+
+This is the state-of-the-art hardware and supercomputing technology is available with Google Cloud products and services
+:::
+
+
+
+##### STORAGE
+
+> How to choose from these products and services ? 
+
+It depends of data type and bussiness needs
+
+
+
+*Unstructured data*
+
+* Cloud Storage  
+  * Standard storage - *Hot data*
+  * Nearline storage - *Once per month*
+  * Coldline storage - *Once every 90 days*
+  * Archive storage - *Once a year*
+
+
+*Structure data*
+
+* **Transactional**
+  * SQL 
+    * local/reginal : Cloud SQL
+    * global : Cloud spanner
+  * NoSQL : Firestore
+
+
+
+* **Analytical**
+  * SQL : BigQuery
+  * NOSQL : Cloud Bigtable
+
+
+
+
+
+
+#### Data and AI Tools
+
+Products available in each stage of the data-to-AI workflow
+
+* Ingestion and processing : _(Pub/Sub, Dataflow, Dataproc and Cloud Data Fusion)_
+* Storage : _(CloudSQL, Cloud Spanner, Cloud BigTable and Firestore)_
+* Analytics : _(BigQuery and looker)_
+* AI/ML : (_VertexAI_)
+
+
+
+##### ML model categories
+
+* AI includes anything related to computer mimicking human intelligence  _(Robts and self-driving cars)_
+* Machine Learning is a subset of AI that allows computers to learn without being explicity programmed
+
+
+
+
+##### BigQuery ML
+
+
+With **BigQuery ML**, you can manage the **tabular data** and **execute ML models** in one place with just a few steps
+
+
+Key phases of Machine Learning project
+
+1. Extract, transform, and load data into BigQuery
+2. Select and preprocess featres
+  * BigQuery ML does some preprocessing for us, like **one-hot encoding**
+3. Create the model
+
+```
+#standarSQL
+
+CREATE MODEL
+ecommerce.classification
+
+OPTIONS
+(
+  model_type='logistic_reg'
+  input_label_cols='will_buy_later'
+
+) AS 
+
+# SQL with training data
+
+```
+
+There are others algorithms : 
+
+![BigQuery Model Selection](img/model_selection_gcp_bg.png)
+
+4. Evaluate the performance of the trained model
+
+
+
+```
+SELECT 
+  roc_auc,
+  accuracy,
+  precision,
+  recall
+FROM 
+  ML.EVALUATE(MODEL`ecommerce.classification`)
+```
+
+
+
+
+5. Use the model to make predictions
+
+
+```
+SELECT * FROM
+  ML.PREDICT
+  (
+    MODEL.`ecommerce.classification` )
+```
+
+
+
+### AI Development Options
+
+Google offers to build a machine learning models 
+
+1. **Pre-trained APIs** :  _Use ML models that google already built and trained_
+2. **BigQuery ML** : _Use SQL queries to create and execute ML models in BigQuery_
+3. **AutoML** : _Apply no-code solution to build ml models on Vertex AI_
+4. **Custom training** : _Code your own ML env to have the control over the ML pipeline_
+
+#### Pre-Trained APIs
+
+API _(**A**pplication **P**rogramming **I**nterface)_ define how software components communicate with each other.
+
+* Cloud Natural Language API : recognizes parts of speech called entities and sentiment.
+* Cloud Speech-to-Text : convert audio to text
+* Cloud Translation API : convert text from one language to another
+* Cloud Vision : recognizes content in static images
+* Cloud Video Intelligence : recognizes motion and actions in a video
+* Diagflow API : builds conversational interfaces
+* Generative AI related APIs : 
+  * PaLM for text : perform language tasks and tune the LLM model with your own data.
+  * PaLM for chat : create applications that engage users in dynamic and context-aware conversations.
+  * Image for image : create and edit images
+  * Embeddings API for text and Image : extract semantic information from unstructured data.
+  * Chirp for speech : build voice 
+  * Cody for code generation : produce and debug code
+
+* Natural Language API
+  * [Try - demo](https://cloud.google.com/natural-language#section-2)
+
+
+#### Vertex AI
+
+Vertex AI provides an end-to-end ML, pipeline to prepare data, and create, deploy, and manage models over time, and at scale.
+
+We can think of Vertex AI Workbench as a Jupyter notebook deployed in a single development environment
+
+
+#### Auto ML
+
+Automate the process to develop and deploy an ML model.
+
+AutoML automates the pipeline from feature ngineering, to architecture search, to hyperparameter tuning, and to model ensembly
+
+
+#### Custom Training
+
+*Do-it-yourself* solution to build an ML project.
+
+Which environment you want your ML training code to use.
+
+  * pre-built container
+  * custom container
+
+
+Can use ML Library (_TensorFlow, scikit-learn, and PyTorch._) collection of pre-written code that can be used to perform machine learning tasks.
+
+TensorFlow
+
+
+#### Lab Natural Language API
+
+### AI Development Workflow
+
+#### How a machine learns
+
+There are several types of **Neural Networks** that solves different problems
+
+* ANN *artificial neural network*
+* DNN *deep neural network*
+* CNN *convolutional neural network*
+* RNN *recurrent neural network*
+* LLM *large language models*
+
+
+STEP 1 : calculate the weighted sum _multiplying each input value by its corresponding weight, and then summing the products_
+
+<!--![Step 1](img/how_nn_works_1.png)-->
+
+STEP 2: apply an activation function to the weighted sum.
+
+
+<!--![STEP 2](img/how_nn_works_2.png)-->
+
+
+STEP 3 :  the weighted sum is calculated for the output layer
+
+STEP 4 :  apply an activation function to the weighted sum
+
+<!--![Result](img/how_nn_works_3.png)-->
+
+STEP 5 : calculate the cost function to minimize the difference.
+
+<!--![STEP 5](img/how_nn_works_5.png)-->
+
+
+Cost functions for :
+* regression _(MSE)_
+* classfication _(Cross-entropy)_
+
+
+STEP 6: backpropagation
+
+ *if the difference between the predicted and actual results is significant, you must go back to adjust weights and biases to minimize the cost function.*
+
+<!--![STEP 6](img/how_nn_works_6.png)-->
+
+
+STEP 7: Interate the process (epoch)
+
+<!--![STEP 7](img/how_nn_works_7.png)-->
+
+
+* we can set the number of epochs as a hyperparameter in training
+* we can tell that the cost function has reached its optimum when the value stops decreasing, even after many iterations.
+
+> This is how a neural network learns : It iterates the learning by continuously adjusting weights to improve behavior until it reaches the best result.
+
+
+##### What is an activation function ? 
+
+>  activation function is used to prevent linearity or add non-linearity.
+
+* ReLU
+* Sigmoid : binary classfication
+* Softmax : multi-class classification
+* TanH
+* etc ...
+
+
+
+
+#### ML workflow
+
+Stages :
+
+1. Data preparation  (Upload data and  Feature engineer) 
+2. Model development 
+3. Model serving 
+
+
+#### Data preparation
+
+During this stage, you must upload data and then prepare it for model training with feature engineering.
+
+
+* feature engineering: the data must be processed before the model starts training.
+* Vertex AI provides a function called Vertex AI Feature Store, which is a centralized repository to organize, store, and serve features.
+
+
+
+#### Model development 
+
+After data is ready it is time to training the model, this stage involves two iterative steps : 
+
+1. Model training
+2. Model evaluation
+
+
+Vertex AI provides extensive evaluation metrics to help determine a model’s performance. A confusion matrix is a specific performance measurement for machine learning classification problems.
+
+<!--![Confusion Matrix](img/confusion_matrix.png)-->
+
+
+**Recall** : refers to all the positive cases, and looks at how many were predicted correctly.
+**Precision** : refers to all the cases predicted as positive, and how many are actually positive.
+
+![](img/precision_recall_confusion_matrix.png)
+
+
+#### Model serving
+
+On this stage we have two steps : 
+
+1. Deploy model
+2. Monitor the model
+
+There are 3 options to deploy a model
+
+1. Endpoint
+2. Batch prediction
+3. Offline prediction
+
+
+To monitor there are a toolkit **Vertex AI Pipelines**
+
+
+
+
+####  MLOps and workflow automation
+
+> MLOps means automating and monitoring each step of the ML system construction to enable continuous integration, training, and delivery.
+
+* MLOps on Vertex AI is a tool kit called Vertex AI Pipelines that supports : 
+  * Kubeflow Pipelines, or KFP, and 
+  * TensorFlow Extended, or TFX.
+
+
+
+
+
+
+### Generative AI
+
+Generative AI aims to solve general problems trained with amount of multimodal data.
+
+Behind it we have LLMs *(Large Language Models)* , the revolution starts in 2017 when **Transformers** was invented by Google Researchers.
+
+#### What are _Large Language Models_ ?
+
+  Refer to **large**, **general-purpose** language models can be **pre-trained** and then **fine-tuned** for specific purpose
+
+* Large : 
+  * Large training dataset *PetaBytes*
+  * Large number of parameters *trillions*
+
+* LLM are trained to solve : 
+  * Text classification
+  * Question answering
+  * Document summarization
+  * Text generation
+
+
+#### Use Cases
+
+  * Create :  
+    * Generate description from images 
+    * Improve images
+  
+  * Summarize: 
+    * Videos, audio and paragraphs
+    * Geneate Q&A 
+
+  * Discover
+    * Search for a document
+    * Discover coding bugs
+
+  * Automate
+    * Extract and label contracts
+    * classify feedback and create ticket
+
+
+#### Duet AI
+
+Code assistance provides AI-driven code assistance for cloud users such as application developers and data engineers.
+
+
+#### Model Garden
+
+**Model Garden** is a single place to discover and interact with many of Google’s pre-trained and open-source models
+
+**Categories of models**
+
+  * Foundation models
+    * PaLM for text
+    * PaLM for chat
+    * Imagen for image
+    * Embeddings API for text and image
+    * Chirp for speech
+    * Codey for code generation
+
+  * Task-specific solutions
+    * Entity analysis
+    * Sentiment analysis
+    * Syntax analysis
+    * Content classification
+    * Object detector
+    * Text translation
+
+  * Fine-tunable or open-source models 
+
+#### Generative AI Studio
+
+We can use **Generative AI Studio** to quickly prototype and customize generative AI models with no or low code.
+
+That support Language, Vision and Speech
