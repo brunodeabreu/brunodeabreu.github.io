@@ -32,7 +32,7 @@
     "href": "notas.html",
     "title": "Cursos & Treinamentos",
     "section": "",
-    "text": "Professional Machine Learning Engineer\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProfessional Machine Learning Engineer\n\n\n\ngcp\n\n\nmachine learning\n\n\ngoogle\n\n\n\nGoogle path professional Machine Learning Engineer\n\n\n\nBruno\n\n\nSep 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAWS Machine Learning – Specialty\n\n\n\ndatacamp\n\n\npython\n\n\ndata science\n\n\n\nAWS Machine Learning – Specialty\n\n\n\nBruno\n\n\nSep 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Science with Python - DataCamp\n\n\n\ndatacamp\n\n\npython\n\n\ndata science\n\n\n\nData Science with python Carrer path\n\n\n\nBruno\n\n\nSep 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeep learning for Coders fast.ai\n\n\n\nDL\n\n\npython\n\n\nfastai\n\n\n\nA hands-on coding course from fast.ai\n\n\n\nBruno\n\n\nSep 1, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Professional Machine Learning Engineer\n\n\n\ngcp\n\n\nmachine learning\n\n\ngoogle\n\n\n\nGoogle path professional Machine Learning Engineer\n\n\n\nBruno\n\n\nSep 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAWS Machine Learning – Specialty\n\n\n\ndatacamp\n\n\npython\n\n\ndata science\n\n\n\nAWS Machine Learning – Specialty\n\n\n\nBruno\n\n\nSep 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Science with Python - DataCamp\n\n\n\ndatacamp\n\n\npython\n\n\ndata science\n\n\n\nData Science with python Carrer path\n\n\n\nBruno\n\n\nSep 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeep learning for Coders fast.ai\n\n\n\nDL\n\n\npython\n\n\nfastai\n\n\n\nA hands-on coding course from fast.ai\n\n\n\nBruno\n\n\nSep 1, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#experiência",
@@ -508,7 +508,7 @@
     "href": "notas/2023-09-06-GCP-ML-Engineer/index.html",
     "title": "Professional Machine Learning Engineer",
     "section": "",
-    "text": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer\n\n\n1.1 Developing ML models by using BigQuery ML\n\nBigQuery is fully managed DW, that can analyse data using SQL, i.e, use SQL to create and execute ML models in BigQuery\nWe can perform both data analytics and build ML models within BigQuery\nBigQuery ML tunes the parameters for you and helps you manage the ML workflow, also perform some pre-procesing like One-Hot Encoding\nWe create the model inside BigQuery\n\nLAB\nPredicting Visitor Purchases with BigQuery ML\nTo read\n\nBig Query intro\nBig Query Syntax\n\n1.2 Building AI solutions by using ML APIs.\nGCP has several pre-trained machine learn models that can be used by API(application programming interface)\nPre-trained API offered as a services:\n\n\n\nPre-trained API\n\n\n1.3 Training models by using AutoML.\nAutoML apply a non-code solution to build models on VertexAI\n\n\n\n2.1 Exploring and preprocessing organization-wide data (e.g., Cloud Storage, BigQuery, Cloud Spanner, Cloud SQL, Apache Spark, Apache Hadoop).\n2.2 Model prototyping using Jupyter notebooks.\n2.3 Tracking and running ML experiments.\n\n\n\n3.1 Building models.\n3.2 Training models.\n3.3 Choosing appropriate hardware for training.\n\n\n\n4.1 Serving models.\n4.2 Scaling online model serving.\n\n\n\n5.1 Developing end-to-end ML pipelines.\n5.2 Automating model retraining.\n5.3 Tracking and auditing metadata.\n\n\n\n6.1 Identifying risks to ML solutions.\n6.2 Monitoring, testing, and troubleshooting ML solutions."
+    "text": "Professional Machine Learning Engineer"
   },
   {
     "objectID": "notas/2023-09-06-GCP-ML-Engineer/index.html#introduction-to-ai-and-machine-learning",
@@ -647,8 +647,8 @@
     "objectID": "notas/2023-09-01-deep-learning/index.html#overfitting-and-validationtest-dataset",
     "href": "notas/2023-09-01-deep-learning/index.html#overfitting-and-validationtest-dataset",
     "title": "Deep learning for Coders fast.ai",
-    "section": "",
-    "text": "In time series instead of remove data from the middle it is better to truncate the last weeks\nFastai will show the metrics from validation dataset\nHow (and why) to create a good validation set"
+    "section": "Overfitting and Validation/Test dataset",
+    "text": "Overfitting and Validation/Test dataset\n\nIn time series instead of remove data from the middle it is better to truncate the last weeks\nFastai will show the metrics from validation dataset\nHow (and why) to create a good validation set"
   },
   {
     "objectID": "notas/2023-09-06-GCP-ML-Engineer/index.html#section-1-architecting-low-code-ml-solutions-12-of-the-exam",
@@ -705,5 +705,12 @@
     "title": "Professional Machine Learning Engineer",
     "section": "",
     "text": "6.1 Identifying risks to ML solutions.\n6.2 Monitoring, testing, and troubleshooting ML solutions."
+  },
+  {
+    "objectID": "notas/2023-09-01-deep-learning/index.html#noteook-prof-jeremy-howard",
+    "href": "notas/2023-09-01-deep-learning/index.html#noteook-prof-jeremy-howard",
+    "title": "Deep learning for Coders fast.ai",
+    "section": "Noteook Prof JEREMY HOWARD",
+    "text": "Noteook Prof JEREMY HOWARD\nhttps://www.kaggle.com/code/jhoward/getting-started-with-nlp-for-absolute-beginners"
   }
 ]
